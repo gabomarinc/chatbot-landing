@@ -209,7 +209,8 @@ const EmotionalValue: React.FC = () => {
             </motion.div>
 
             {/* === MOBILE STACK (Vertical) === */}
-            <div className="md:hidden flex flex-col items-center gap-6 mt-6 w-full z-30 pb-40">
+            {/* Increased bottom padding to pb-64 to fix cutoff issue */}
+            <div className="md:hidden flex flex-col items-center gap-6 mt-6 w-full z-30 pb-64">
                 {/* Card 2: Response Rate */}
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}

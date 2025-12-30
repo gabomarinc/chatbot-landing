@@ -43,7 +43,7 @@ const MobileNavBar: React.FC = () => {
 
   return (
     <div className="md:hidden fixed bottom-6 left-4 right-4 z-50">
-      <div className="absolute inset-0 bg-[#1c2938]/80 backdrop-blur-xl rounded-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]" />
+      <div className="absolute inset-0 bg-black/40 backdrop-blur-xl rounded-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]" />
       
       <div className="relative flex justify-around items-center h-16 px-2">
         {navItems.map((item) => {
