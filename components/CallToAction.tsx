@@ -10,7 +10,7 @@ const CallToAction: React.FC = () => {
         <h2 className="text-3xl sm:text-4xl md:text-6xl font-black mb-6 md:mb-8 tracking-tighter">
           ¿Listo para escalar tus <br /> ventas por WhatsApp?
         </h2>
-        <p className="text-base sm:text-xl text-gray-400 mb-8 md:mb-10 max-w-2xl mx-auto font-normal">
+        <p className="text-base sm:text-xl text-gray-200 mb-8 md:mb-10 max-w-2xl mx-auto font-normal">
           Únete a las empresas líderes que ya están usando Konsul para automatizar su comercio conversacional.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">

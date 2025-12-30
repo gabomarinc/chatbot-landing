@@ -1,22 +1,37 @@
 import React from 'react';
-import { Twitter, Instagram, Linkedin, Github, Mail, ArrowRight } from 'lucide-react';
+import { Instagram, Linkedin, Mail, ArrowRight, Youtube } from 'lucide-react';
 import Button from './ui/Button';
+
+// Custom Tiktok Icon to match Lucide style
+const TiktokIcon = ({ size = 16, className = "" }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+  </svg>
+);
 
 const Footer: React.FC = () => {
   return (
     // Removed bg-konsul-950, added bg-transparent
     <footer id="footer" className="bg-transparent pb-8 px-4 md:px-6 relative z-10">
       {/* Floating Container */}
-      <div className="container mx-auto max-w-7xl bg-[#0B1219] rounded-[2.5rem] px-8 py-12 md:px-12 md:py-16 border border-white/5 relative overflow-hidden">
+      <div className="container mx-auto max-w-7xl bg-[#1c2938] rounded-[2.5rem] px-8 py-12 md:px-12 md:py-16 border border-white/5 relative overflow-hidden">
         
         {/* Top Grid: Newsletter, Links, Social */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
           
           {/* Newsletter Section (Left) */}
           <div className="lg:col-span-4 space-y-6">
-            <Button variant="outline" size="sm" className="rounded-full mb-4">
-              Descargar App
-            </Button>
             <div>
                 <h3 className="text-white font-medium mb-2">Recibe el boletín semanal de Konsul</h3>
                 <div className="relative max-w-sm">
@@ -82,7 +97,7 @@ const Footer: React.FC = () => {
              />
              <span className="text-sm text-gray-400 mb-4 block">Únete a nuestra comunidad</span>
              <div className="flex gap-4">
-               {[Instagram, Twitter, Linkedin, Github].map((Icon, i) => (
+               {[Instagram, Linkedin, Youtube, TiktokIcon].map((Icon, i) => (
                   <a key={i} href="#" className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-[#27bea5] transition-colors">
                      <Icon size={16} />
                   </a>

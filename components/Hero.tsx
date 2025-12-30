@@ -1306,28 +1306,42 @@ const DashboardView = () => {
     </motion.div>
   );
 };
-// --- END DASHBOARD COMPONENTS ---
 
 interface MenuItemProps {
   icon: React.ReactNode;
   label: string;
   active?: boolean;
   onClick?: () => void;
+  index?: number;
 }
 
-const MenuItem: React.FC<MenuItemProps> = ({ icon, label, active, onClick }) => (
+const MenuItem: React.FC<MenuItemProps> = ({ icon, label, active, onClick, index = 0 }) => (
   <li 
     onClick={onClick}
-    className={`flex items-center gap-3 p-2 rounded-xl transition-all cursor-pointer group ${
+    className={`relative flex items-center gap-3 p-2 rounded-xl transition-all cursor-pointer group ${
       active ? 'bg-white/10 text-white' : 'text-gray-400 hover:text-white hover:bg-white/5'
     }`}
   >
-    <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-transform group-hover:scale-110 ${
+     {/* Sequential Glow Effect */}
+     <motion.div
+        className="absolute inset-0 rounded-xl border border-[#27bea5] shadow-[0_0_12px_rgba(39,190,165,0.4)] pointer-events-none"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [0, 1, 0] }}
+        transition={{
+            duration: 1.5,
+            times: [0, 0.5, 1],
+            delay: 1 + (index * 1.5), // Sequential delay
+            repeat: Infinity,
+            repeatDelay: (6 * 1.5) - 1.5 // Wait for cycle to complete
+        }}
+     />
+
+    <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-transform group-hover:scale-110 relative z-10 ${
         active ? 'bg-[#27bea5] text-white shadow-lg shadow-[#27bea5]/20' : 'bg-[#1c2938] border border-white/10'
     }`}>
       {React.cloneElement(icon as React.ReactElement, { size: 14 })}
     </div>
-    <span className="text-sm font-medium">{label}</span>
+    <span className="text-sm font-medium relative z-10">{label}</span>
   </li>
 );
 
@@ -1405,32 +1419,48 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative pt-28 pb-16 md:pt-48 md:pb-32 overflow-hidden">
+    <section id="hero" className="relative pt-28 pb-16 md:pt-48 md:pb-32 overflow-hidden bg-konsul-950">
       
-      {/* Background Gradients */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] md:w-[1000px] h-[300px] md:h-[500px] bg-konsul-500/20 rounded-full blur-[80px] md:blur-[120px] -z-10 opacity-50" />
-      <div className="absolute bottom-0 right-0 w-[400px] md:w-[800px] h-[300px] md:h-[600px] bg-blue-600/10 rounded-full blur-[60px] md:blur-[100px] -z-10" />
+      {/* --- NEW BACKGROUND IMAGE --- */}
+      <div className="absolute top-0 left-0 w-full h-[100vh] max-h-[1200px] overflow-hidden z-0 pointer-events-none">
+          {/* 
+              Using object-cover to satisfy "full width" requirement on all screens.
+              Added opacity-100 to show vivid colors.
+              Added mt-24 md:mt-0 to push image down on mobile so header doesn't cover face.
+          */}
+          <img 
+            src="https://konsul.digital/wp-content/uploads/2025/12/Gemini_Generated_Image_x41m0wx41m0wx41m-scaled.avif" 
+            alt="Konsul Background" 
+            className="w-full h-full object-cover object-top opacity-100 mt-24 md:mt-0"
+          />
+          
+          {/* 
+              Radial Gradient for Text Readability:
+              Centered 'ellipse_at_center' to create shadow behind the main text (middle of screen),
+              leaving the top (face area) clear at 100% opacity.
+          */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(28,41,56,0.95)_0%,transparent_60%)]" />
 
-      <div className="container mx-auto px-4 md:px-6 max-w-7xl">
+          {/* Top Fade (Blending with Header) - Removed blur on desktop */}
+          <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#1c2938] via-[#1c2938]/80 to-transparent backdrop-blur-[2px] md:backdrop-blur-none" />
+          
+          {/* Bottom Fade: Removed blur on desktop */}
+          <div className="absolute bottom-0 left-0 right-0 h-[30vh] md:h-[40vh] bg-gradient-to-t from-[#1c2938] via-[#1c2938]/90 to-transparent backdrop-blur-[2px] md:backdrop-blur-none" />
+      </div>
+
+      {/* Ambient Blob - Increased brightness/opacity slightly */}
+      <div className="absolute bottom-0 right-0 w-[400px] md:w-[800px] h-[300px] md:h-[600px] bg-[#27bea5]/20 rounded-full blur-[80px] md:blur-[120px] -z-10" />
+
+      <div className="container mx-auto px-4 md:px-6 max-w-7xl relative z-10">
         <div className="flex flex-col items-center text-center max-w-5xl mx-auto">
           
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] md:text-xs font-medium text-konsul-300 mb-6 md:mb-8 backdrop-blur-sm"
-          >
-            <span className="w-2 h-2 rounded-full bg-konsul-500 animate-pulse" />
-            La plataforma #1 de Comercio Conversacional
-          </motion.div>
-
           {/* Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[1.1] mb-6 md:mb-8 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60"
+            // Changed from mt-[12vh] to mt-[10vh] to better center within image face area on mobile
+            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[1.1] mb-6 md:mb-8 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60 mt-[10vh] md:mt-0"
           >
             Convierte conversaciones <br />
             <span className="text-white">en clientes leales.</span>
@@ -1441,7 +1471,9 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-base sm:text-lg md:text-xl text-gray-400 font-normal mb-8 md:mb-10 max-w-3xl leading-relaxed px-4 md:px-0"
+            // Reduced margin from mt-2 to mt-0 (essentially removed) to tighten spacing
+            // CHANGED: text-gray-400 -> text-gray-200 for better visibility
+            className="text-base sm:text-lg md:text-xl text-gray-200 font-normal mb-8 md:mb-10 max-w-3xl leading-relaxed px-4 md:px-0 mt-0 md:mt-0"
           >
             Centraliza WhatsApp, Instagram y Messenger en una sola bandeja. Automatiza ventas con IA, lanza campañas masivas y gestiona a todo tu equipo de soporte en un solo lugar.
           </motion.p>
@@ -1451,7 +1483,7 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-col sm:flex-row items-center gap-3 md:gap-4 w-full sm:w-auto px-6 sm:px-0"
+            className="flex flex-col sm:flex-row items-center gap-3 md:gap-4 w-full sm:w-auto px-6 sm:px-0 mb-8"
           >
             <Button size="lg" icon={<ArrowRight size={18} />} className="w-full sm:w-auto">
               Prueba Gratis 14 Días
@@ -1459,6 +1491,17 @@ const Hero: React.FC = () => {
             <Button variant="outline" size="lg" icon={<MessageSquare size={18} />} className="w-full sm:w-auto">
               Hablar con Ventas
             </Button>
+          </motion.div>
+
+          {/* Badge - MOVED BELOW BUTTONS */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] md:text-xs font-medium text-konsul-300 backdrop-blur-sm"
+          >
+            <span className="w-2 h-2 rounded-full bg-konsul-500 animate-pulse" />
+            La plataforma #1 de Comercio Conversacional
           </motion.div>
 
           {/* Social Proof / Trust */}
@@ -1469,9 +1512,19 @@ const Hero: React.FC = () => {
             className="mt-12 md:mt-16 pt-8 border-t border-white/5 w-full"
           >
             <p className="text-xs md:text-sm text-gray-500 mb-6 font-normal">Potenciando a las empresas líderes en Latinoamérica</p>
-            <div className="flex flex-wrap justify-center gap-6 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500 px-4">
-              {['Rappi', 'Toyota', 'Remax', 'Universidad Anáhuac'].map((brand) => (
-                 <span key={brand} className="text-lg md:text-xl font-bold text-white/40 hover:text-white transition-colors cursor-default">{brand}</span>
+            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-100 px-4">
+              {[
+                { name: 'Rappi', src: 'https://placehold.co/120x40/1c2938/ffffff?text=Rappi' },
+                { name: 'Toyota', src: 'https://placehold.co/120x40/1c2938/ffffff?text=Toyota' },
+                { name: 'Remax', src: 'https://placehold.co/120x40/1c2938/ffffff?text=Remax' },
+                { name: 'Anahuac', src: 'https://placehold.co/120x40/1c2938/ffffff?text=Anahuac' }
+              ].map((logo) => (
+                 <img
+                    key={logo.name}
+                    src={logo.src}
+                    alt={`${logo.name} logo`}
+                    className="h-8 md:h-10 w-auto object-contain opacity-40 hover:opacity-100 grayscale hover:grayscale-0 transition-all duration-500"
+                 />
               ))}
             </div>
           </motion.div>
@@ -1484,6 +1537,9 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.5 }}
           className="mt-12 md:mt-20 w-full max-w-[95%] md:max-w-5xl mx-auto relative"
         >
+          {/* Enhanced Glow Effect behind the Dashboard */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[80%] bg-[#27bea5]/30 blur-[100px] rounded-full -z-10 pointer-events-none mix-blend-screen" />
+
           {/* Main Frame */}
           <div className="relative rounded-2xl md:rounded-2xl bg-[#1c2938] border border-white/10 p-1 md:p-2 shadow-2xl shadow-konsul-500/10 overflow-hidden group">
              
@@ -1507,51 +1563,71 @@ const Hero: React.FC = () => {
 
                   {/* Menu List */}
                   <div className="flex-1 overflow-y-auto px-4 space-y-6">
-                     {navSections.map((section) => (
-                       <div key={section.title}>
-                          <h4 className="text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-3 px-2">{section.title}</h4>
-                          <ul className="space-y-1">
-                              {section.items.map((item) => (
-                                <MenuItem 
-                                  key={item.id}
-                                  icon={item.icon}
-                                  label={item.label}
-                                  active={activeTab === item.id}
-                                  onClick={() => setActiveTab(item.id as any)}
-                                />
-                              ))}
-                          </ul>
-                       </div>
-                     ))}
+                     {(() => {
+                        let globalItemIndex = 0;
+                        return navSections.map((section) => (
+                           <div key={section.title}>
+                              <h4 className="text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-3 px-2">{section.title}</h4>
+                              <ul className="space-y-1">
+                                  {section.items.map((item) => (
+                                    <MenuItem 
+                                      key={item.id}
+                                      icon={item.icon}
+                                      label={item.label}
+                                      active={activeTab === item.id}
+                                      onClick={() => setActiveTab(item.id as any)}
+                                      index={globalItemIndex++}
+                                    />
+                                  ))}
+                              </ul>
+                           </div>
+                        ));
+                     })()}
                   </div>
                </div>
 
                {/* RIGHT CONTENT AREA (Switchable) */}
                <div className="flex-1 flex flex-col h-full bg-[#16202c] relative overflow-hidden">
                   
-                  {/* MOBILE NAV TABS (New) */}
-                  <div className="md:hidden h-14 border-b border-white/5 bg-[#1c2938] flex items-center overflow-x-auto px-4 gap-2 no-scrollbar shrink-0">
-                      {navSections.flatMap(s => s.items).map((item) => (
-                         <button 
-                            key={item.id} 
-                            onClick={() => setActiveTab(item.id as any)} 
-                            className="relative px-3 py-1.5 rounded-lg flex items-center gap-2 shrink-0 transition-colors"
-                         >
-                           {activeTab === item.id && (
-                             <motion.div 
-                               layoutId="mobile-tab-bg" 
-                               className="absolute inset-0 bg-white/10 rounded-lg" 
-                               transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                             />
-                           )}
-                           <span className={`relative z-10 flex items-center ${activeTab === item.id ? 'text-white' : 'text-gray-400'}`}>
-                              {React.cloneElement(item.icon as React.ReactElement, { size: 16 })}
-                           </span>
-                           <span className={`relative z-10 text-xs font-bold ${activeTab === item.id ? 'text-white' : 'text-gray-400'}`}>
-                              {item.label}
-                           </span>
-                         </button>
-                      ))}
+                  {/* MOBILE NAV TABS (New) - GRID LAYOUT */}
+                  <div className="md:hidden border-b border-white/5 bg-[#1c2938] shrink-0 p-2">
+                      <div className="grid grid-cols-3 gap-2">
+                          {navSections.flatMap(s => s.items).map((item, index) => (
+                             <button 
+                                key={item.id} 
+                                onClick={() => setActiveTab(item.id as any)} 
+                                className="relative p-2 rounded-lg flex flex-col items-center justify-center gap-1 transition-colors group"
+                             >
+                               {/* Sequential Glow Effect (Mobile) */}
+                               <motion.div
+                                  className="absolute inset-0 rounded-lg border border-[#27bea5] shadow-[0_0_8px_rgba(39,190,165,0.4)] pointer-events-none"
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: [0, 1, 0] }}
+                                  transition={{
+                                      duration: 1.5,
+                                      times: [0, 0.5, 1],
+                                      delay: 1 + (index * 1.5),
+                                      repeat: Infinity,
+                                      repeatDelay: (6 * 1.5) - 1.5
+                                  }}
+                               />
+
+                               {activeTab === item.id && (
+                                 <motion.div 
+                                   layoutId="mobile-tab-bg" 
+                                   className="absolute inset-0 bg-white/10 rounded-lg" 
+                                   transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                 />
+                               )}
+                               <span className={`relative z-10 flex items-center ${activeTab === item.id ? 'text-white' : 'text-gray-400'}`}>
+                                  {React.cloneElement(item.icon as React.ReactElement, { size: 14 })}
+                               </span>
+                               <span className={`relative z-10 text-[9px] font-bold ${activeTab === item.id ? 'text-white' : 'text-gray-400'}`}>
+                                  {item.label}
+                               </span>
+                             </button>
+                          ))}
+                      </div>
                   </div>
 
                   <AnimatePresence mode="wait">

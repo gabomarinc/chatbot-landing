@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Bot, Share2, BarChart3, Users, ArrowRight, CheckCircle2, MessageCircle, Send } from 'lucide-react';
+import { Bot, BarChart3, Users, ArrowRight, CheckCircle2, Globe, Mail, Zap, Smartphone, Headphones, Instagram, Facebook } from 'lucide-react';
 import Button from './ui/Button';
 
 // Reusing the exact card dimensions and style logic from EmotionalValue
@@ -10,97 +10,124 @@ import Button from './ui/Button';
 const featuresData = [
   {
     id: 0,
-    title: "Bandeja Compartida",
-    label: "Multi-Agente",
-    description: "Centraliza WhatsApp, Instagram y Messenger. Asigna conversaciones a tu equipo automáticamente.",
-    icon: <Users className="text-white" size={24} />,
+    title: "Atención omnicanal",
+    label: "Centralización",
+    description: "Web, WhatsApp, email, redes sociales.",
+    icon: <Globe className="text-white" size={24} />,
     visual: (
       <div className="relative w-full h-full flex flex-col items-center justify-center px-6">
-        {/* Inbox UI Mockup */}
-        <div className="w-full bg-[#16202c] rounded-xl border border-white/5 overflow-hidden shadow-2xl">
-           <div className="h-8 bg-[#1c2938] border-b border-white/5 flex items-center px-3 gap-2">
-              <div className="w-2 h-2 rounded-full bg-red-500" />
-              <div className="w-2 h-2 rounded-full bg-yellow-500" />
-              <div className="w-2 h-2 rounded-full bg-green-500" />
-           </div>
-           <div className="p-3 space-y-2">
-              {[
-                { name: 'Juan P.', msg: 'Quiero cotizar...', time: '2m', active: true },
-                { name: 'Ana M.', msg: 'Gracias por la ayuda', time: '15m', active: false },
-                { name: 'Carlos R.', msg: '¿Tienen stock?', time: '1h', active: false },
-              ].map((chat, i) => (
-                <div key={i} className={`flex items-center gap-3 p-2 rounded-lg ${chat.active ? 'bg-konsul-500/10 border border-konsul-500/20' : 'bg-transparent'}`}>
-                   <div className="w-8 h-8 rounded-full bg-white/10 flex-shrink-0" />
-                   <div className="flex-1 min-w-0">
-                      <div className="flex justify-between">
-                         <span className="text-[10px] font-bold text-white truncate">{chat.name}</span>
-                         <span className="text-[9px] text-gray-500">{chat.time}</span>
-                      </div>
-                      <p className="text-[9px] text-gray-400 truncate">{chat.msg}</p>
-                   </div>
+        {/* Central Hub Visualization */}
+        <div className="relative flex items-center justify-center w-full h-full">
+            {/* Connecting Lines */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 border border-white/5 rounded-full animate-spin [animation-duration:10s]" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 border border-white/10 rounded-full animate-pulse" />
+            
+            {/* WhatsApp (Top) */}
+            <div className="absolute top-12 left-1/2 -translate-x-1/2 bg-[#25D366]/20 p-2.5 rounded-full border border-[#25D366]/30 text-[#25D366] shadow-[0_0_15px_rgba(37,211,102,0.3)] transition-transform hover:scale-110">
+                {/* Custom WhatsApp SVG for brand accuracy */}
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            </div>
+
+            {/* Instagram (Right) */}
+            <div className="absolute top-1/2 right-6 -translate-y-1/2 p-[1.5px] rounded-xl bg-gradient-to-tr from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] shadow-[0_0_15px_rgba(253,29,29,0.3)] transition-transform hover:scale-110">
+               <div className="bg-[#1c2938] p-2 rounded-[10px]">
+                  <Instagram size={20} className="text-white" />
+               </div>
+            </div>
+
+            {/* Facebook (Bottom) */}
+            <div className="absolute bottom-16 left-1/2 -translate-x-1/2 bg-[#1877F2]/20 p-2.5 rounded-full border border-[#1877F2]/30 text-[#1877F2] shadow-[0_0_15px_rgba(24,119,242,0.3)] transition-transform hover:scale-110">
+               {/* Custom Facebook SVG for filled style */}
+               <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </div>
+            
+            {/* Web (Left) */}
+            <div className="absolute top-1/2 left-6 -translate-y-1/2 bg-cyan-500/20 p-2.5 rounded-full border border-cyan-500/30 text-cyan-400 shadow-[0_0_15px_rgba(34,211,238,0.3)] transition-transform hover:scale-110">
+               <Globe size={20} />
+            </div>
+
+            {/* Core */}
+            <div className="relative z-10 w-20 h-20 bg-[#1c2938] rounded-2xl border border-white/20 shadow-[0_0_30px_rgba(39,190,165,0.2)] flex items-center justify-center">
+                <div className="w-12 h-12 bg-[#27bea5] rounded-xl flex items-center justify-center text-white shadow-lg">
+                    <Users size={24} />
                 </div>
-              ))}
-           </div>
+                {/* Notification Badge */}
+                <div className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-[10px] font-bold text-white border-2 border-[#1c2938]">
+                    4
+                </div>
+            </div>
         </div>
       </div>
     )
   },
   {
     id: 1,
-    title: "Envíos Masivos",
-    label: "WhatsApp Marketing",
-    description: "Lanza campañas oficiales con tasas de apertura del 98%. Reactiva clientes y vende más.",
-    icon: <Send className="text-white" size={24} />,
+    title: "Panel de analítica",
+    label: "Datos en Tiempo Real",
+    description: "Métricas y KPIs siempre actualizados.",
+    icon: <BarChart3 className="text-white" size={24} />,
     visual: (
-      <div className="relative w-full h-full flex flex-col items-center justify-center pb-10">
-         <div className="relative z-10 w-48 bg-[#1c2938] rounded-2xl border border-white/10 p-4 shadow-2xl text-center">
-            <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-3 shadow-[0_0_20px_rgba(34,197,94,0.4)]">
-               <Send size={20} className="text-white ml-1" />
-            </div>
-            <h4 className="text-white font-bold text-lg mb-1">Black Friday</h4>
-            <p className="text-gray-400 text-xs mb-4">Campaña enviada a 5,000 clientes</p>
-            <div className="flex justify-between text-left text-xs">
-               <div>
-                  <span className="block text-gray-500">Enviados</span>
-                  <span className="font-bold text-white">100%</span>
-               </div>
-               <div>
-                  <span className="block text-gray-500">Leídos</span>
-                  <span className="font-bold text-green-400">98%</span>
+      <div className="relative w-full h-full flex items-center justify-center px-6 pb-12">
+         <div className="w-full h-40 bg-[#1c2938]/60 border border-white/10 rounded-xl p-4 relative overflow-hidden shadow-2xl backdrop-blur-sm flex flex-col justify-end">
+            <div className="absolute top-4 left-4 right-4 flex justify-between items-center">
+               <span className="text-[10px] text-gray-400 uppercase font-bold">Rendimiento Semanal</span>
+               <div className="flex items-center gap-1 text-[#27bea5] bg-[#27bea5]/10 px-2 py-0.5 rounded-full">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#27bea5] animate-pulse" />
+                  <span className="text-[9px] font-bold">Live</span>
                </div>
             </div>
+            <div className="flex items-end justify-between gap-1.5 h-24">
+               {[40, 65, 45, 80, 55, 90, 70].map((h, i) => (
+                 <div key={i} className="w-full bg-[#27bea5]/20 rounded-t-sm relative group overflow-hidden" style={{ height: `${h}%` }}>
+                    <div className="absolute bottom-0 left-0 right-0 top-0 bg-gradient-to-t from-[#27bea5]/60 to-transparent opacity-80 group-hover:opacity-100 transition-opacity" />
+                 </div>
+               ))}
+            </div>
+            {/* Overlay Grid */}
+            <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:20px_20px]" />
          </div>
-         {/* Abstract waves */}
-         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-green-500/10 rounded-full blur-[60px] -z-10" />
       </div>
     )
   },
   {
     id: 2,
-    title: "Chatbots No-Code",
-    label: "Automatización",
-    description: "Crea flujos de venta y soporte arrastrando y soltando. Sin necesidad de programadores.",
-    icon: <Bot className="text-white" size={24} />,
+    title: "Transferencia fluida",
+    label: "Handoff Híbrido",
+    description: "Escalamiento inteligente cuando es necesario.",
+    icon: <Headphones className="text-white" size={24} />,
     visual: (
-      <div className="relative w-full h-full flex items-center justify-center px-6">
-         <div className="w-full h-full flex flex-col items-center justify-center gap-3 relative z-10">
-             {/* Flow Nodes */}
-             <div className="flex gap-4">
-                <div className="bg-[#1c2938] border border-white/20 p-2 rounded-lg text-[10px] text-white font-medium w-24 text-center">Inicio</div>
-             </div>
-             <div className="h-4 w-px bg-white/20" />
-             <div className="flex gap-4">
-                <div className="bg-konsul-500 border border-konsul-400 p-2 rounded-lg text-[10px] text-white font-bold w-28 text-center shadow-lg">Menú Principal</div>
-             </div>
-             <div className="h-4 w-px bg-white/20" />
-             <div className="flex gap-8">
-                 <div className="flex flex-col items-center">
-                     <div className="h-4 w-px bg-white/20 mb-2" />
-                     <div className="bg-[#1c2938] border border-white/20 p-2 rounded-lg text-[10px] text-white w-20 text-center">Ventas</div>
+      <div className="relative w-full h-full flex flex-col items-center justify-center px-8">
+         <div className="w-full space-y-4 relative z-10">
+             {/* Bot Message */}
+             <div className="flex gap-3">
+                 <div className="w-8 h-8 rounded-full bg-white/10 border border-white/5 flex items-center justify-center shrink-0">
+                     <Bot size={14} className="text-white" />
                  </div>
-                 <div className="flex flex-col items-center">
-                     <div className="h-4 w-px bg-white/20 mb-2" />
-                     <div className="bg-[#1c2938] border border-white/20 p-2 rounded-lg text-[10px] text-white w-20 text-center">Soporte</div>
+                 <div className="bg-[#16202c] border border-white/10 p-3 rounded-2xl rounded-tl-none text-[10px] text-gray-300 shadow-sm max-w-[80%]">
+                     Entendido. Te conectaré con un especialista ahora mismo.
+                 </div>
+             </div>
+
+             {/* Connection Animation */}
+             <div className="flex items-center justify-center gap-2 py-1">
+                 <div className="h-px w-12 bg-gradient-to-r from-transparent via-[#27bea5] to-transparent opacity-50" />
+                 <span className="text-[9px] text-[#27bea5] font-bold uppercase tracking-widest">Escalando</span>
+                 <div className="h-px w-12 bg-gradient-to-r from-transparent via-[#27bea5] to-transparent opacity-50" />
+             </div>
+
+             {/* Human Agent Entry */}
+             <div className="bg-[#1c2938] border border-[#27bea5]/30 p-3 rounded-xl flex items-center gap-3 shadow-lg relative overflow-hidden">
+                 <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#27bea5]" />
+                 <div className="w-10 h-10 rounded-full bg-[#27bea5] flex items-center justify-center text-white font-bold shrink-0 shadow-md">
+                     S
+                 </div>
+                 <div>
+                     <p className="text-xs font-bold text-white">Sofía se ha unido</p>
+                     <p className="text-[10px] text-gray-400">Gerente de Soporte</p>
+                 </div>
+                 <div className="ml-auto flex gap-1">
+                     <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-bounce" />
+                     <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-bounce delay-75" />
                  </div>
              </div>
          </div>
@@ -109,22 +136,46 @@ const featuresData = [
   },
   {
     id: 3,
-    title: "Métricas Reales",
-    label: "Analytics",
-    description: "Toma decisiones basadas en datos. Monitorea tiempos de respuesta y ventas por agente.",
-    icon: <BarChart3 className="text-white" size={24} />,
+    title: "Generación de leads",
+    label: "Oportunidades",
+    description: "Identifica oportunidades automáticamente.",
+    icon: <Zap className="text-white" size={24} />,
     visual: (
-      <div className="relative w-full h-full flex items-center justify-center px-6 pb-12">
-         <div className="w-full h-40 bg-[#1c2938]/60 border border-white/10 rounded-xl p-4 relative overflow-hidden shadow-2xl backdrop-blur-sm flex flex-col justify-end">
-            <div className="absolute top-4 left-4">
-               <span className="text-[10px] text-gray-400 uppercase font-bold">Ventas por Canal</span>
+      <div className="relative w-full h-full flex items-center justify-center px-6">
+         {/* Lead Card */}
+         <div className="w-64 bg-[#1c2938] border border-white/10 rounded-2xl p-5 shadow-2xl relative overflow-hidden group">
+            {/* Glow effect */}
+            <div className="absolute -top-10 -right-10 w-32 h-32 bg-yellow-500/10 rounded-full blur-3xl group-hover:bg-yellow-500/20 transition-colors" />
+
+            <div className="flex justify-between items-start mb-5 relative z-10">
+               <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gray-700 to-gray-800 border border-white/10 flex items-center justify-center text-white font-bold text-sm">
+                     JP
+                  </div>
+                  <div>
+                      <div className="h-2 w-20 bg-gray-600/50 rounded-full mb-1.5" />
+                      <div className="h-1.5 w-12 bg-gray-700/50 rounded-full" />
+                  </div>
+               </div>
+               <div className="px-2 py-0.5 rounded border border-green-500/30 bg-green-500/10 text-green-400 text-[9px] font-bold uppercase tracking-wide">
+                  Hot Lead
+               </div>
             </div>
-            <div className="flex items-end justify-between gap-1.5 h-24">
-               {[40, 65, 45, 80, 55, 90].map((h, i) => (
-                 <div key={i} className="w-full bg-konsul-500/20 rounded-t-sm relative group overflow-hidden" style={{ height: `${h}%` }}>
-                    <div className="absolute bottom-0 left-0 right-0 top-0 bg-gradient-to-t from-konsul-500/60 to-transparent opacity-80" />
-                 </div>
-               ))}
+
+            <div className="space-y-3 relative z-10">
+                <div className="flex justify-between items-end">
+                    <span className="text-[10px] text-gray-500 font-medium">Probabilidad de Cierre</span>
+                    <span className="text-sm font-bold text-white">94%</span>
+                </div>
+                {/* Progress Bar */}
+                <div className="h-2 w-full bg-gray-700 rounded-full overflow-hidden">
+                    <div className="h-full bg-gradient-to-r from-yellow-500 to-red-500 w-[94%]" />
+                </div>
+            </div>
+
+            <div className="mt-5 pt-4 border-t border-white/5 flex gap-2">
+                <div className="px-2 py-1 bg-white/5 rounded text-[9px] text-gray-400">Interesado</div>
+                <div className="px-2 py-1 bg-white/5 rounded text-[9px] text-gray-400">Presupuesto Alto</div>
             </div>
          </div>
       </div>

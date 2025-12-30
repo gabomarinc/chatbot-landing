@@ -4,17 +4,29 @@ import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 const Card = ({ title, value, label, img, darkBorder = false }: { title: string, value: string, label: string, img: string, darkBorder?: boolean }) => (
   // Updated background to #1c2938
   <div className={`relative w-full h-full rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl group transition-all duration-700 bg-[#1c2938] ${darkBorder ? 'border-2 border-gray-800' : ''}`}>
-    <div className="absolute inset-0">
-      <img src={img} alt={title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 mix-blend-overlay" />
-    </div>
-    <div className="absolute inset-0 bg-gradient-to-t from-[#1c2938] via-[#1c2938]/40 to-transparent" />
     
-    <div className="absolute bottom-5 left-5 right-5 md:bottom-8 md:left-6 md:right-6">
-      <div className="inline-flex items-center px-3 py-1 md:px-4 md:py-1.5 rounded-full mb-2 md:mb-4 bg-white/20 backdrop-blur-md border border-white/30 text-white">
+    {/* Image Container: Absolute inset-0 to occupy full background */}
+    <div className="absolute inset-0">
+      <img 
+        src={img} 
+        alt={title} 
+        // object-cover: Occupies full background
+        // object-center: Centers the image content
+        // opacity-100: Real colors
+        className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" 
+      />
+    </div>
+
+    {/* Dark Gradient Overlay: Only at the bottom for text readability */}
+    <div className="absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-[#1c2938] via-[#1c2938]/80 to-transparent pointer-events-none" />
+    
+    {/* Content Container: Anchored to bottom, z-10 to sit above image/gradient */}
+    <div className="absolute bottom-5 left-5 right-5 md:bottom-8 md:left-6 md:right-6 z-10">
+      <div className="inline-flex items-center px-3 py-1 md:px-4 md:py-1.5 rounded-full mb-2 md:mb-4 bg-[#27bea5]/10 backdrop-blur-md border border-[#27bea5]/20 text-[#27bea5]">
          <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider">{label}</span>
       </div>
       <div className="text-white">
-         <p className="text-xs md:text-sm opacity-80 mb-1 font-medium">{title}</p>
+         <p className="text-xs md:text-sm opacity-90 mb-1 font-medium text-gray-200">{title}</p>
          <p className="text-xl md:text-3xl font-bold tracking-tight">{value}</p>
       </div>
     </div>
@@ -35,15 +47,11 @@ const EmotionalValue: React.FC = () => {
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    // CHANGED: Adjusted to "start 20%" to significantly delay the transition.
-    // This ensures the section is well up the screen (title at top, card centered)
-    // before the background expands, satisfying the "70% visible" requirement.
     offset: ["start 20%", "end end"]
   });
 
   // === TRIGGER LOGIC ===
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    // Trigger extremely early relative to the offset
     if (latest > 0.005 && !isExpanded) {
       setIsExpanded(true);
     } else if (latest < 0.005 && isExpanded) {
@@ -54,13 +62,10 @@ const EmotionalValue: React.FC = () => {
   // === UNIFIED TRANSITION CONFIGURATION ===
   const unifiedTransition = { 
     duration: 0.9, 
-    ease: [0.25, 1, 0.5, 1] // Apple-style easing
+    ease: [0.25, 1, 0.5, 1] 
   };
 
   // Dimensions configuration
-  // Mobile: Reduced by 20% from (280x360) -> (224x288)
-  // Desktop: 320px x 450px
-  // The 'frame' adds ~6px to create the border effect before expansion
   const cardWidthMobile = 224;
   const cardHeightMobile = 288;
   const cardWidthDesktop = 320;
@@ -73,26 +78,17 @@ const EmotionalValue: React.FC = () => {
   const frameHeight = currentCardHeight + 6;
 
   return (
-    // CHANGED: Removed pb-32 to avoid double padding. Now relies on inner container padding.
-    <section ref={containerRef} className="relative h-auto md:h-[110vh] md:min-h-[800px] bg-konsul-950 font-sans overflow-hidden">
+    <section ref={containerRef} id="emotional" className="relative h-auto md:h-[110vh] md:min-h-[800px] bg-konsul-950 font-sans overflow-hidden">
       
-      {/* 
-         CHANGED: Removed 'sticky top-0 h-screen' on mobile. 
-         Now it flows naturally ('relative'), preventing content from being cut off 
-         or the title from scrolling away before the user sees it.
-         UPDATED: pt-24 match top padding.
-      */}
       <div className="relative md:sticky md:top-0 md:h-screen w-full flex flex-col items-center justify-start pt-24 md:pt-24">
         
         {/* === CONTENT CONTAINER === */}
-        {/* Removed overflow-y-auto since we are using natural flow on mobile now */}
         <div className="relative w-full max-w-7xl h-full flex flex-col items-center justify-start px-6 gap-2 md:gap-8 md:pb-10">
 
             {/* --- TITLES AREA --- */}
             <div className="relative w-full text-center h-[100px] md:h-[130px] flex items-end justify-center shrink-0 z-50 mb-2 md:mb-0">
                 {/* Initial Dark Title */}
                 <motion.div 
-                    // CHANGED: Reduced y offset on mobile (-20) so it doesn't move up as much
                     animate={{ opacity: isExpanded ? 0 : 1, y: isExpanded ? (isMobile ? -20 : -50) : 0, scale: isExpanded ? 0.9 : 1 }}
                     transition={unifiedTransition} 
                     className="absolute inset-0 flex items-center justify-center"
@@ -122,9 +118,6 @@ const EmotionalValue: React.FC = () => {
 
 
             {/* --- MAIN ANCHOR CONTAINER --- */}
-            {/* 
-               Contains the Center Card and the Expanding Frame.
-            */}
             <motion.div 
                 className={`relative z-30 w-full flex items-center justify-center mt-4 md:mt-0`}
                 animate={{ y: isExpanded ? (isMobile ? 0 : -40) : 10 }}
@@ -135,10 +128,6 @@ const EmotionalValue: React.FC = () => {
                 <motion.div
                     animate={{
                         width: isExpanded ? '150vw' : `${frameWidth}px`, 
-                        // CHANGED: Increased mobile height to 230vh.
-                        // Since the background expands from the center of the first card, 
-                        // 230vh ensures it extends far enough DOWN to cover the 2nd and 3rd cards 
-                        // in the vertical stack.
                         height: isExpanded ? (isMobile ? '230vh' : '120vh') : `${frameHeight}px`, 
                         borderRadius: isExpanded ? '0rem' : '2.7rem'
                     }}
@@ -167,10 +156,10 @@ const EmotionalValue: React.FC = () => {
                     transition={unifiedTransition}
                 >
                       <Card 
-                        title="Tasa de Respuesta"
-                        value="< 1 min"
+                        title="velocidad de respuesta"
+                        value="+100%"
                         label="Velocidad"
-                        img="https://images.unsplash.com/photo-1556745757-8d76bdb6984b?auto=format&fit=crop&q=80&w=800"
+                        img="https://konsul.digital/wp-content/uploads/2025/12/velocidad-icon.avif"
                         darkBorder={true}
                       />
                 </motion.div>
@@ -187,10 +176,10 @@ const EmotionalValue: React.FC = () => {
                      {/* Card Content */}
                      <div className="w-full h-full relative overflow-hidden rounded-[2rem] md:rounded-[2.5rem] bg-[#1c2938]">
                           <Card 
-                            title="Aumento en Ventas"
-                            value="+300%"
-                            label="Crecimiento"
-                            img="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=800"
+                            title="tareas manuales"
+                            value="-50%"
+                            label="Eficiencia"
+                            img="https://konsul.digital/wp-content/uploads/2025/12/eficiencia-icon.avif"
                             darkBorder={false}
                           />
                      </div>
@@ -209,10 +198,10 @@ const EmotionalValue: React.FC = () => {
                     transition={unifiedTransition}
                 >
                       <Card 
-                        title="Tasa de Apertura"
-                        value="98%"
-                        label="Marketing"
-                        img="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800"
+                        title="leads calificados"
+                        value="+30%"
+                        label="Leads"
+                        img="https://konsul.digital/wp-content/uploads/2025/12/leads-icon.avif"
                         darkBorder={true}
                       />
                 </motion.div>
@@ -220,10 +209,6 @@ const EmotionalValue: React.FC = () => {
             </motion.div>
 
             {/* === MOBILE STACK (Vertical) === */}
-            {/* 
-                Vertical stack for mobile.
-                UPDATED: pb-40 (160px) to visually match the top margin (pt-24 + title offset ≈ 156px).
-            */}
             <div className="md:hidden flex flex-col items-center gap-6 mt-6 w-full z-30 pb-40">
                 {/* Card 2: Response Rate */}
                 <motion.div
@@ -231,7 +216,6 @@ const EmotionalValue: React.FC = () => {
                     animate={{ 
                         opacity: isExpanded ? 1 : 0, 
                         y: isExpanded ? 0 : 50,
-                        // Fix: Use explicit pixel height
                         height: isExpanded ? cardHeightMobile : 0 
                     }}
                     transition={{ ...unifiedTransition, delay: 0.1 }}
@@ -239,21 +223,20 @@ const EmotionalValue: React.FC = () => {
                     className="shrink-0 relative overflow-hidden"
                 >
                      <Card 
-                        title="Tasa de Respuesta"
-                        value="< 1 min"
+                        title="velocidad de respuesta"
+                        value="+100%"
                         label="Velocidad"
-                        img="https://images.unsplash.com/photo-1556745757-8d76bdb6984b?auto=format&fit=crop&q=80&w=800"
+                        img="https://konsul.digital/wp-content/uploads/2025/12/velocidad-icon.avif"
                         darkBorder={true}
                       />
                 </motion.div>
 
-                {/* Card 3: Open Rate */}
+                {/* Card 3: Leads */}
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ 
                         opacity: isExpanded ? 1 : 0, 
                         y: isExpanded ? 0 : 50,
-                        // Fix: Use explicit pixel height
                         height: isExpanded ? cardHeightMobile : 0 
                     }}
                     transition={{ ...unifiedTransition, delay: 0.2 }}
@@ -261,10 +244,10 @@ const EmotionalValue: React.FC = () => {
                     className="shrink-0 relative overflow-hidden"
                 >
                      <Card 
-                        title="Tasa de Apertura"
-                        value="98%"
-                        label="Marketing"
-                        img="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800"
+                        title="leads calificados"
+                        value="+30%"
+                        label="Leads"
+                        img="https://konsul.digital/wp-content/uploads/2025/12/leads-icon.avif"
                         darkBorder={true}
                       />
                 </motion.div>

@@ -30,13 +30,32 @@ const App: React.FC = () => {
         <Pricing />
         
         {/* Continuous Background Wrapper for CTA and Footer */}
-        <div className="relative w-full">
-          {/* Background Gradients extending behind both components */}
-          <div className="absolute inset-0 bg-gradient-to-b from-konsul-950 via-[#27bea5]/10 to-[#27bea5]/30 -z-10" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#27bea5]/20 via-konsul-950/0 to-konsul-950/0 -z-10" />
+        <div className="relative w-full overflow-hidden bg-[#1c2938]">
           
-          <CallToAction />
-          <Footer />
+          {/* Background Image with Blending */}
+          <div className="absolute inset-0 w-full h-full pointer-events-none">
+             {/* Image Layer */}
+             <img 
+               src="https://konsul.digital/wp-content/uploads/2025/12/banner-footer-web-2-scaled.avif" 
+               alt="" 
+               className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-screen"
+             />
+             
+             {/* Gradient Overlays for "Diluted" blending effect */}
+             {/* Top fade: Blends the image start with the previous dark section */}
+             <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-to-b from-[#1c2938] to-transparent" />
+             
+             {/* Bottom fade: Ensures footer bottom looks clean */}
+             <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0B1219] to-transparent" />
+             
+             {/* Overall tint to ensure text contrast */}
+             <div className="absolute inset-0 bg-[#1c2938]/30" />
+          </div>
+          
+          <div className="relative z-10">
+            <CallToAction />
+            <Footer />
+          </div>
         </div>
       </main>
       <MobileNavBar />

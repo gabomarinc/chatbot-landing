@@ -14,14 +14,34 @@ const Header: React.FC = () => {
   }, []);
 
   const navLinks = [
+    { name: 'Chatbot', href: '#hero' },
     { name: 'Producto', href: '#features' },
     { name: 'Soluciones', href: '#emotional' },
     { name: 'Precios', href: '#pricing' },
     { name: 'Empresa', href: '#footer' },
   ];
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      // Offset calculation to account for the fixed floating header
+      // The header is roughly 60-80px tall including padding. 
+      // We use 110px to give it breathing room so the section title is clearly visible below the header.
+      const headerOffset = 110; 
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - headerOffset;
+  
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  };
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex justify-center items-start pt-4 px-4 md:pt-6 pointer-events-none">
+    // Increased z-index significantly to ensure it floats above everything (z-[999])
+    <header className="fixed top-0 left-0 right-0 z-[999] flex justify-center items-start pt-4 px-4 md:pt-6 pointer-events-none">
        {/* 
           pointer-events-none on the container allows clicks to pass through the empty space around the floating bar.
           pointer-events-auto on the bar itself re-enables clicks.
@@ -37,18 +57,20 @@ const Header: React.FC = () => {
           mx-auto 
           rounded-full 
           border border-white/10 
-          backdrop-blur-xl 
-          shadow-[0_8px_32px_rgba(0,0,0,0.2)]
+          backdrop-blur-xl
+          shadow-[0_8px_32px_rgba(0,0,0,0.4)]
           transition-all duration-300
-          ${isScrolled 
-            ? 'bg-[#1c2938]/90 py-2.5 px-4 md:py-3 md:px-6' 
-            : 'bg-[#1c2938]/70 py-3 px-5 md:py-4 md:px-8'
-          }
+          bg-black/40
+          py-3 px-5 md:py-4 md:px-8
         `}
       >
-        {/* Logo Area */}
-        <div className="flex items-center gap-8 shrink-0">
-            <a href="#" onClick={() => window.scrollTo(0,0)} className="flex items-center gap-2 group">
+        {/* Logo Area - z-20 to ensure clickability over absolute nav if overlapping */}
+        <div className="flex items-center gap-8 shrink-0 z-20 relative">
+            <a 
+              href="#hero" 
+              onClick={(e) => handleNavClick(e, '#hero')}
+              className="flex items-center gap-2 group cursor-pointer block"
+            >
             <img 
                 src="https://konsul.digital/wp-content/uploads/2025/07/Logo-en-BW-e1751712792454.png" 
                 alt="Konsul Logo" 
@@ -57,22 +79,22 @@ const Header: React.FC = () => {
             </a>
         </div>
 
-        {/* Desktop Nav - Centered Absolute */}
-        {/* Using absolute centering ensures it stays perfectly centered regardless of logo/actions width difference */}
-        <nav className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
+        {/* Desktop Nav - Centered Absolute - z-10 */}
+        <nav className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2 z-10">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="px-4 py-2 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 rounded-full transition-all"
+              onClick={(e) => handleNavClick(e, link.href)}
+              className="px-4 py-2 text-sm font-medium text-gray-200 hover:text-white hover:bg-white/10 rounded-full transition-all cursor-pointer select-none"
             >
               {link.name}
             </a>
           ))}
         </nav>
 
-        {/* Actions */}
-        <div className="flex items-center gap-4 shrink-0">
+        {/* Actions - z-20 */}
+        <div className="flex items-center gap-4 shrink-0 z-20 relative">
           <a href="#" className="hidden md:block text-sm font-medium text-white hover:text-[#27bea5] transition-colors">
             Login
           </a>
