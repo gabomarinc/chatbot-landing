@@ -8,13 +8,13 @@ import {
 } from 'lucide-react';
 import Button from './ui/Button';
 
+// ... [Keep existing interfaces and data arrays unchanged] ...
 interface Message {
   id: string;
   role: 'user' | 'bot';
   text: string;
 }
 
-// --- SHARED VARIANTS ---
 const containerVariants = {
   hidden: { opacity: 0 },
   show: {
@@ -29,8 +29,6 @@ const itemVariants = {
   hidden: { opacity: 0, y: 10 },
   show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 24 } }
 };
-
-// --- CHANNELS VIEW COMPONENTS ---
 
 const channelsData = [
   { 
@@ -76,7 +74,6 @@ const ChannelsView = () => {
 
   return (
     <div className="flex h-full relative overflow-hidden">
-        {/* Main List Area */}
         <motion.div
            variants={containerVariants}
            initial="hidden"
@@ -84,7 +81,6 @@ const ChannelsView = () => {
            exit={{ opacity: 0, x: -20 }}
            className={`flex-1 h-full bg-[#16202c] overflow-y-auto p-4 md:p-6 space-y-6 transition-all duration-300 ${selectedChannel ? 'w-full md:w-1/2 opacity-50 pointer-events-none md:pointer-events-auto md:opacity-100' : 'w-full'}`}
         >
-             {/* Header */}
              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
                  <motion.div variants={itemVariants}>
                      <h2 className="text-xl font-bold text-white">Canales</h2>
@@ -97,8 +93,6 @@ const ChannelsView = () => {
                      </button>
                  </motion.div>
              </div>
-
-             {/* List Items */}
              <div className="space-y-4">
                  {channelsData.map(channel => (
                      <motion.div
@@ -108,12 +102,9 @@ const ChannelsView = () => {
                         onClick={() => setSelectedChannel(channel)}
                         className={`group bg-[#1c2938] hover:bg-[#233346] border rounded-2xl p-5 cursor-pointer transition-all flex flex-col md:flex-row items-center gap-6 relative overflow-hidden ${selectedChannel?.id === channel.id ? 'border-[#27bea5] bg-[#233346]' : 'border-white/5'}`}
                      >
-                        {/* Icon Box */}
                         <div className={`w-16 h-16 rounded-2xl ${channel.color} flex items-center justify-center shrink-0 border border-white/5 shadow-inner`}>
                             {channel.icon}
                         </div>
-
-                        {/* Info */}
                         <div className="flex-1 min-w-0 text-center md:text-left">
                             <div className="flex items-center justify-center md:justify-start gap-3 mb-1">
                                 <h3 className="text-lg font-bold text-white">{channel.name}</h3>
@@ -135,8 +126,6 @@ const ChannelsView = () => {
                                 </span>
                             </div>
                         </div>
-
-                        {/* Actions */}
                         <div className="flex items-center gap-3 w-full md:w-auto justify-center md:justify-end border-t md:border-t-0 border-white/5 pt-4 md:pt-0">
                             <button className="px-4 py-2 bg-[#16202c] hover:bg-white/5 border border-white/5 rounded-xl text-xs font-bold text-white transition-colors">
                                 Configurar
@@ -149,8 +138,6 @@ const ChannelsView = () => {
                  ))}
              </div>
         </motion.div>
-
-        {/* Configuration Slide-Over Panel */}
         <AnimatePresence>
             {selectedChannel && (
                 <motion.div
@@ -160,7 +147,6 @@ const ChannelsView = () => {
                     transition={{ type: "spring", damping: 30, stiffness: 300 }}
                     className="absolute top-0 right-0 w-full md:w-[450px] h-full bg-[#1c2938] border-l border-white/10 shadow-2xl z-20 flex flex-col"
                 >
-                    {/* Panel Header */}
                      <div className="p-6 border-b border-white/5 flex items-center justify-between bg-[#16202c]">
                         <div className="flex items-center gap-4">
                              <div className={`w-10 h-10 rounded-xl ${selectedChannel.color} flex items-center justify-center`}>
@@ -178,18 +164,12 @@ const ChannelsView = () => {
                            <X size={18} />
                         </button>
                      </div>
-
-                     {/* Panel Content */}
                      <div className="flex-1 overflow-y-auto p-6 space-y-8">
-                        
-                        {/* Tabs (Visual Only) */}
                         <div className="flex gap-1 bg-[#16202c] p-1 rounded-xl border border-white/5">
                             <button className="flex-1 py-2 text-xs font-bold text-white bg-[#1c2938] rounded-lg shadow-sm">Configuración</button>
                             <button className="flex-1 py-2 text-xs font-medium text-gray-500 hover:text-white">Instalación</button>
                             <button className="flex-1 py-2 text-xs font-medium text-gray-500 hover:text-white">Logs</button>
                         </div>
-
-                        {/* Widget Appearance */}
                         <div>
                             <label className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4 block">Apariencia del Widget</label>
                             <div className="space-y-4">
@@ -218,8 +198,6 @@ const ChannelsView = () => {
                                 </div>
                             </div>
                         </div>
-
-                        {/* Code Snippet */}
                         <div>
                              <label className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4 block">Snippet de Instalación</label>
                              <div className="relative group">
@@ -251,8 +229,6 @@ const ChannelsView = () => {
                              </p>
                         </div>
                      </div>
-
-                     {/* Footer */}
                      <div className="p-5 border-t border-white/5 bg-[#16202c] flex gap-3">
                          <Button variant="outline" className="flex-1 border-white/10 hover:bg-white/5 text-white">
                              Previsualizar
@@ -268,17 +244,13 @@ const ChannelsView = () => {
   )
 }
 
-// --- END CHANNELS VIEW COMPONENTS ---
-
-// --- TEAM VIEW COMPONENTS (Previous) ---
-
 const teamData = [
   { 
     id: 1, 
     name: "Omar Ortiz", 
     email: "omar@konsul.digital", 
     role: "Propietario", 
-    roleType: "owner", // for styling
+    roleType: "owner", 
     status: "Activo", 
     isOnline: true,
     lastLogin: "hace alrededor de 1 hora",
@@ -313,7 +285,6 @@ const TeamView = () => {
 
   return (
     <div className="flex h-full relative overflow-hidden">
-        {/* Main List Area */}
         <motion.div
            variants={containerVariants}
            initial="hidden"
@@ -321,7 +292,6 @@ const TeamView = () => {
            exit={{ opacity: 0, x: -20 }}
            className={`flex-1 h-full bg-[#16202c] overflow-y-auto p-4 md:p-6 space-y-6 transition-all duration-300 ${selectedMember ? 'w-full md:w-1/2 opacity-50 pointer-events-none md:pointer-events-auto md:opacity-100' : 'w-full'}`}
         >
-             {/* Header */}
              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
                  <motion.div variants={itemVariants}>
                      <div className="flex items-center gap-3 mb-1">
@@ -341,8 +311,6 @@ const TeamView = () => {
                      </button>
                  </motion.div>
              </div>
-
-             {/* Table Header */}
              <motion.div variants={itemVariants} className="grid grid-cols-12 gap-4 px-6 py-2 text-[10px] font-bold text-gray-500 uppercase tracking-wider border-b border-white/5 pb-4 hidden md:grid">
                 <div className="col-span-4">Usuario / Email</div>
                 <div className="col-span-2">Rol del Sistema</div>
@@ -350,8 +318,6 @@ const TeamView = () => {
                 <div className="col-span-3">Último Login</div>
                 <div className="col-span-1 text-right">Acciones</div>
              </motion.div>
-
-             {/* List Items */}
              <div className="space-y-3">
                  {teamData.map(member => (
                      <motion.div
@@ -361,7 +327,6 @@ const TeamView = () => {
                         onClick={() => setSelectedMember(member)}
                         className={`group relative bg-[#1c2938] hover:bg-[#233346] border border-white/5 rounded-2xl p-4 md:py-4 transition-all cursor-pointer grid grid-cols-1 md:grid-cols-12 gap-4 items-center ${selectedMember?.id === member.id ? 'border-[#27bea5] bg-[#233346]' : ''}`}
                      >
-                        {/* Col 1: User Info */}
                         <div className="col-span-1 md:col-span-4 flex items-center gap-3">
                             <div className={`w-10 h-10 rounded-full ${member.avatarColor} flex items-center justify-center text-lg font-bold border border-white/5`}>
                                 {member.name.charAt(0)}
@@ -374,8 +339,6 @@ const TeamView = () => {
                                 </div>
                             </div>
                         </div>
-
-                        {/* Col 2: Role */}
                         <div className="hidden md:flex col-span-2">
                              <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold border ${
                                  member.roleType === 'owner' 
@@ -388,28 +351,20 @@ const TeamView = () => {
                                 {member.role}
                              </span>
                         </div>
-
-                        {/* Col 3: Status */}
                         <div className="hidden md:flex col-span-2 items-center gap-2">
                             <span className={`w-2 h-2 rounded-full ${member.isOnline ? 'bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]' : 'bg-gray-500'}`} />
                             <span className={`text-xs font-medium ${member.isOnline ? 'text-white' : 'text-gray-500'}`}>
                                 {member.status}
                             </span>
                         </div>
-
-                        {/* Col 4: Last Login */}
                         <div className="hidden md:block col-span-3 text-xs text-gray-400">
                             {member.lastLogin}
                         </div>
-
-                        {/* Col 5: Actions */}
                         <div className="hidden md:block col-span-1 text-right">
                            <button className="p-1.5 hover:bg-white/10 rounded-lg text-gray-500 hover:text-white transition-colors">
                               <MoreVertical size={16} />
                            </button>
                         </div>
-
-                        {/* Mobile Extras */}
                          <div className="md:hidden flex justify-between items-center w-full border-t border-white/5 pt-3 mt-1">
                              <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold ${
                                  member.roleType === 'owner' ? 'bg-purple-500/10 text-purple-400' : 'bg-gray-500/10 text-gray-400'
@@ -425,8 +380,6 @@ const TeamView = () => {
                  ))}
              </div>
         </motion.div>
-
-        {/* Member Settings Slide-Over */}
         <AnimatePresence>
             {selectedMember && (
                 <motion.div
@@ -436,7 +389,6 @@ const TeamView = () => {
                     transition={{ type: "spring", damping: 30, stiffness: 300 }}
                     className="absolute top-0 right-0 w-full md:w-[400px] h-full bg-[#1c2938] border-l border-white/10 shadow-2xl z-20 flex flex-col"
                 >
-                    {/* Panel Header */}
                      <div className="p-6 border-b border-white/5 flex items-center justify-between bg-[#16202c]">
                         <div className="flex items-center gap-4">
                              <div className={`w-12 h-12 rounded-full ${selectedMember.avatarColor} flex items-center justify-center text-xl font-bold border border-white/10 shadow-inner`}>
@@ -454,11 +406,7 @@ const TeamView = () => {
                            <X size={18} />
                         </button>
                      </div>
-
-                     {/* Panel Content */}
                      <div className="flex-1 overflow-y-auto p-6 space-y-8">
-                        
-                        {/* Role Selection */}
                         <div>
                             <label className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3 block">Rol del Usuario</label>
                             <div className="bg-[#16202c] rounded-xl border border-white/5 p-1 flex gap-1">
@@ -476,8 +424,6 @@ const TeamView = () => {
                                 ))}
                             </div>
                         </div>
-
-                        {/* Permissions */}
                         <div>
                              <label className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4 block">Permisos de Acceso</label>
                              <div className="space-y-3">
@@ -499,8 +445,6 @@ const TeamView = () => {
                                 ))}
                              </div>
                         </div>
-
-                        {/* Activity Stats */}
                         <div>
                              <label className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3 block">Actividad Reciente</label>
                              <div className="grid grid-cols-2 gap-3">
@@ -514,10 +458,7 @@ const TeamView = () => {
                                 </div>
                              </div>
                         </div>
-
                      </div>
-
-                     {/* Footer */}
                      <div className="p-5 border-t border-white/5 bg-[#16202c]">
                          {selectedMember.roleType === 'owner' ? (
                              <p className="text-center text-xs text-gray-500">No puedes eliminar la cuenta del propietario.</p>
@@ -535,9 +476,6 @@ const TeamView = () => {
   );
 };
 
-// --- END TEAM VIEW COMPONENTS ---
-
-// --- AGENTS VIEW COMPONENTS (Previous) ---
 const agentsData = [
   { 
     id: 1, 
@@ -566,7 +504,6 @@ const AgentsView = () => {
 
   return (
     <div className="flex h-full relative overflow-hidden">
-        {/* Main Grid Area */}
         <motion.div
            variants={containerVariants}
            initial="hidden"
@@ -574,7 +511,6 @@ const AgentsView = () => {
            exit={{ opacity: 0, x: -20 }}
            className={`flex-1 h-full bg-[#16202c] overflow-y-auto p-4 md:p-6 space-y-6 transition-all duration-300 ${selectedAgent ? 'w-full md:w-1/2 opacity-50 pointer-events-none md:pointer-events-auto md:opacity-100' : 'w-full'}`}
         >
-             {/* Header */}
              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
                  <motion.div variants={itemVariants}>
                      <h2 className="text-xl font-bold text-white">Agentes</h2>
@@ -587,8 +523,6 @@ const AgentsView = () => {
                      </button>
                  </motion.div>
              </div>
-
-             {/* Cards Grid */}
              <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
                  {agentsData.map(agent => (
                      <motion.div
@@ -598,7 +532,6 @@ const AgentsView = () => {
                         onClick={() => setSelectedAgent(agent)}
                         className={`bg-[#1c2938] border rounded-2xl p-5 cursor-pointer group transition-all relative overflow-hidden ${selectedAgent?.id === agent.id ? 'border-[#27bea5] ring-1 ring-[#27bea5]' : 'border-white/5 hover:border-white/10 hover:shadow-xl'}`}
                      >
-                        {/* Top Row: Avatar & Name */}
                         <div className="flex justify-between items-start mb-6">
                             <div className="flex items-center gap-4">
                                 <div className={`w-12 h-12 rounded-xl ${agent.color} flex items-center justify-center text-xl font-bold text-white shadow-lg`}>
@@ -615,8 +548,6 @@ const AgentsView = () => {
                                 <MoreHorizontal size={18} />
                             </button>
                         </div>
-
-                        {/* Stats Row */}
                         <div className="flex items-center justify-between bg-[#16202c]/50 rounded-xl p-4 border border-white/5 mb-6 group-hover:bg-[#16202c] transition-colors">
                             <div className="text-center px-2 flex-1">
                                 <div className="flex justify-center mb-1 text-[#27bea5] p-1.5 bg-[#27bea5]/10 rounded-full w-fit mx-auto"><LayoutGrid size={14} /></div>
@@ -636,8 +567,6 @@ const AgentsView = () => {
                                 <div className="text-[9px] text-gray-500 font-bold tracking-wider">PUNTOS</div>
                             </div>
                         </div>
-
-                        {/* Footer Row */}
                         <div className="flex items-center justify-between border-t border-white/5 pt-4">
                             <div className="flex -space-x-2 pl-2">
                                 <div className="w-7 h-7 rounded-full bg-[#1c2938] border border-white/10 flex items-center justify-center text-gray-400 z-10 shadow-sm"><MessageSquare size={12}/></div>
@@ -651,8 +580,6 @@ const AgentsView = () => {
                  ))}
              </div>
         </motion.div>
-
-        {/* Configuration Slide-Over Panel */}
         <AnimatePresence>
             {selectedAgent && (
                 <motion.div
@@ -662,7 +589,6 @@ const AgentsView = () => {
                     transition={{ type: "spring", damping: 30, stiffness: 300 }}
                     className="absolute top-0 right-0 w-full md:w-[400px] h-full bg-[#1c2938] border-l border-white/10 shadow-2xl z-20 flex flex-col"
                 >
-                    {/* Panel Header */}
                      <div className="p-5 border-b border-white/5 flex items-center justify-between bg-[#16202c]">
                         <div className="flex items-center gap-3">
                             <div className={`w-8 h-8 rounded-lg ${selectedAgent.color} flex items-center justify-center text-white font-bold`}>
@@ -683,11 +609,7 @@ const AgentsView = () => {
                            <X size={16} />
                         </button>
                      </div>
-
-                     {/* Config Content */}
                      <div className="flex-1 overflow-y-auto p-6 space-y-8">
-                        
-                        {/* Section: Personality */}
                         <div>
                             <div className="flex items-center justify-between mb-3">
                                 <label className="text-xs font-bold text-gray-500 uppercase tracking-wider">Personalidad</label>
@@ -708,8 +630,6 @@ const AgentsView = () => {
                                 </div>
                             </div>
                         </div>
-
-                        {/* Section: Knowledge Base */}
                          <div>
                             <label className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3 block">Base de Conocimiento</label>
                             <div className="grid grid-cols-2 gap-3">
@@ -729,8 +649,6 @@ const AgentsView = () => {
                                 </div>
                             </div>
                         </div>
-
-                         {/* Section: Channels */}
                          <div>
                             <label className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3 block">Canales Activos</label>
                             <div className="space-y-2">
@@ -755,8 +673,6 @@ const AgentsView = () => {
                             </div>
                          </div>
                      </div>
-                     
-                     {/* Footer Actions */}
                      <div className="p-5 border-t border-white/5 bg-[#16202c] space-y-3">
                         <Button className="w-full bg-[#27bea5] hover:bg-[#1fa992]">Guardar Cambios</Button>
                         <Button variant="ghost" className="w-full text-red-400 hover:text-red-300 hover:bg-red-500/10">Desactivar Agente</Button>
@@ -768,10 +684,6 @@ const AgentsView = () => {
   )
 }
 
-// --- END AGENTS VIEW COMPONENTS ---
-
-// --- PROSPECTS VIEW COMPONENTS ---
-// (Kept ProspectsView and prospectsData logic as is...)
 const prospectsData = [
   { 
     id: 1, 
@@ -832,7 +744,6 @@ const ProspectsView = () => {
 
   return (
     <div className="flex h-full relative overflow-hidden">
-      {/* Main List Area */}
       <motion.div 
         variants={containerVariants}
         initial="hidden"
@@ -840,7 +751,6 @@ const ProspectsView = () => {
         exit={{ opacity: 0, x: -20 }}
         className={`flex-1 h-full bg-[#16202c] overflow-y-auto p-4 md:p-6 space-y-6 transition-all duration-300 ${selectedProspect ? 'w-1/2 opacity-50 pointer-events-none md:pointer-events-auto md:opacity-100' : 'w-full'}`}
       >
-        {/* Header Section */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
            <motion.div variants={itemVariants}>
               <h2 className="text-xl font-bold text-white">Prospectos</h2>
@@ -848,7 +758,6 @@ const ProspectsView = () => {
            </motion.div>
 
            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-2 md:gap-3 w-full md:w-auto">
-              {/* Search Bar */}
               <div className="relative flex-1 md:flex-initial md:w-64 group">
                  <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-[#27bea5]" />
                  <input 
@@ -869,8 +778,6 @@ const ProspectsView = () => {
               </button>
            </motion.div>
         </div>
-
-        {/* Table Header */}
         <motion.div variants={itemVariants} className="grid grid-cols-12 gap-4 px-4 py-2 text-[10px] font-bold text-gray-500 uppercase tracking-wider border-b border-white/5 pb-4 hidden md:grid">
            <div className="col-span-4">Nombre / Contacto</div>
            <div className="col-span-3">Última Interacción</div>
@@ -878,8 +785,6 @@ const ProspectsView = () => {
            <div className="col-span-2">Mensajes</div>
            <div className="col-span-1 text-right">Acciones</div>
         </motion.div>
-
-        {/* List Items */}
         <div className="space-y-3">
            {prospectsData.map((prospect) => (
              <motion.div 
@@ -889,7 +794,6 @@ const ProspectsView = () => {
                onClick={() => setSelectedProspect(prospect)}
                className={`group relative bg-[#1c2938] hover:bg-[#233346] border border-white/5 rounded-xl p-4 md:py-3 transition-all cursor-pointer grid grid-cols-1 md:grid-cols-12 gap-4 items-center ${selectedProspect?.id === prospect.id ? 'border-[#27bea5] bg-[#233346]' : ''}`}
              >
-                {/* Col 1: Name & Contact */}
                 <div className="col-span-1 md:col-span-4 flex items-center gap-3">
                    <div className="w-10 h-10 rounded-full bg-[#27bea5]/10 flex items-center justify-center text-[#27bea5] shrink-0 border border-[#27bea5]/20 group-hover:scale-110 transition-transform">
                       <UserCircle size={20} />
@@ -902,8 +806,6 @@ const ProspectsView = () => {
                       </div>
                    </div>
                 </div>
-
-                {/* Col 2: Date */}
                 <div className="hidden md:block col-span-3">
                    <div className="flex items-center gap-2 text-xs font-medium text-gray-300">
                       <Calendar size={12} className="text-gray-500" />
@@ -911,31 +813,23 @@ const ProspectsView = () => {
                    </div>
                    <div className="text-[10px] text-gray-500 pl-5">{prospect.time}</div>
                 </div>
-
-                {/* Col 3: Agent */}
                 <div className="hidden md:block col-span-2">
                    <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold ${prospect.agentColor}`}>
                       <span className="w-1.5 h-1.5 rounded-full bg-current" />
                       {prospect.agent}
                    </span>
                 </div>
-
-                {/* Col 4: Messages */}
                 <div className="hidden md:block col-span-2">
                    <div className="flex items-center gap-1.5 text-gray-400 group-hover:text-white transition-colors">
                       <MessageSquare size={14} />
                       <span className="text-xs font-bold">{prospect.msgs}</span>
                    </div>
                 </div>
-
-                {/* Col 5: Actions */}
                 <div className="hidden md:block col-span-1 text-right">
                    <button className="p-1.5 hover:bg-white/10 rounded-lg text-gray-500 hover:text-white transition-colors">
                       <MoreHorizontal size={16} />
                    </button>
                 </div>
-
-                {/* Mobile View Extras */}
                 <div className="md:hidden flex justify-between items-center w-full border-t border-white/5 pt-3 mt-1">
                    <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold ${prospect.agentColor}`}>
                       {prospect.agent}
@@ -945,13 +839,10 @@ const ProspectsView = () => {
                       <span className="flex items-center gap-1"><MessageSquare size={12}/> {prospect.msgs}</span>
                    </div>
                 </div>
-
              </motion.div>
            ))}
         </div>
       </motion.div>
-
-      {/* Profile Slide-Over Panel */}
       <AnimatePresence>
         {selectedProspect && (
           <motion.div
@@ -961,7 +852,6 @@ const ProspectsView = () => {
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
             className="absolute top-0 right-0 w-full md:w-[350px] h-full bg-[#1c2938] border-l border-white/10 shadow-2xl z-20 flex flex-col"
           >
-             {/* Panel Header */}
              <div className="p-5 border-b border-white/5 flex items-center justify-between bg-[#16202c]">
                 <h3 className="text-sm font-bold text-white">Perfil del Prospecto</h3>
                 <button 
@@ -971,10 +861,7 @@ const ProspectsView = () => {
                    <X size={16} />
                 </button>
              </div>
-
-             {/* Panel Content */}
              <div className="flex-1 overflow-y-auto p-5">
-                {/* Avatar Large */}
                 <div className="flex flex-col items-center text-center mb-6">
                    <div className="w-20 h-20 rounded-full bg-[#27bea5]/10 flex items-center justify-center text-[#27bea5] mb-3 border-2 border-[#27bea5]/20">
                       <UserCircle size={40} />
@@ -984,8 +871,6 @@ const ProspectsView = () => {
                       {selectedProspect.status}
                    </span>
                 </div>
-
-                {/* Actions Row */}
                 <div className="flex gap-3 mb-8">
                    <button className="flex-1 flex flex-col items-center gap-1 p-3 bg-white/5 hover:bg-white/10 rounded-xl transition-colors border border-white/5">
                       <MessageSquare size={18} className="text-[#27bea5]" />
@@ -1000,11 +885,8 @@ const ProspectsView = () => {
                       <span className="text-[10px] text-gray-300">Email</span>
                    </button>
                 </div>
-
-                {/* Details List */}
                 <div className="space-y-4">
                    <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Información de Contacto</h4>
-                   
                    <div className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5">
                       <Phone size={16} className="text-gray-400" />
                       <div>
@@ -1012,7 +894,6 @@ const ProspectsView = () => {
                          <p className="text-xs text-white font-medium">{selectedProspect.contact}</p>
                       </div>
                    </div>
-
                    <div className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5">
                       <Mail size={16} className="text-gray-400" />
                       <div>
@@ -1020,7 +901,6 @@ const ProspectsView = () => {
                          <p className="text-xs text-white font-medium">{selectedProspect.email}</p>
                       </div>
                    </div>
-
                    <div className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5">
                       <MapPin size={16} className="text-gray-400" />
                       <div>
@@ -1029,7 +909,6 @@ const ProspectsView = () => {
                       </div>
                    </div>
                 </div>
-
                  <div className="mt-6 pt-6 border-t border-white/5">
                     <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-3">Estadísticas</h4>
                     <div className="grid grid-cols-2 gap-3">
@@ -1044,8 +923,6 @@ const ProspectsView = () => {
                     </div>
                  </div>
              </div>
-
-             {/* Footer Button */}
              <div className="p-5 border-t border-white/5 bg-[#16202c]">
                 <Button className="w-full bg-[#27bea5] hover:bg-[#1fa992]">Ver Conversación Completa</Button>
              </div>
@@ -1056,10 +933,6 @@ const ProspectsView = () => {
   );
 };
 
-// --- END PROSPECTS COMPONENTS ---
-
-// --- DASHBOARD COMPONENTS (Previous) ---
-// (Kept DashboardView and StatCard logic as is...)
 const StatCard = ({ icon: Icon, value, label, trend }: any) => (
   <motion.div variants={itemVariants} className="bg-[#1c2938] border border-white/5 p-4 rounded-xl shadow-lg relative overflow-hidden group">
     <div className="flex justify-between items-start mb-2">
@@ -1084,24 +957,17 @@ const DashboardView = () => {
       exit={{ opacity: 0, x: -20 }}
       className="flex-1 h-full bg-[#16202c] overflow-y-auto p-4 md:p-6 space-y-6"
     >
-      {/* Header */}
       <motion.div variants={itemVariants}>
         <h2 className="text-xl font-bold text-white">Panel Principal</h2>
         <p className="text-xs text-gray-500">Información estratégica de tus agentes e interacciones</p>
       </motion.div>
-
-      {/* Top Stats Row */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <StatCard icon={MessageSquare} value="4" label="Conversaciones" trend="0%" />
         <StatCard icon={CreditCard} value="4,983" label="Créditos Disp." trend="0%" />
         <StatCard icon={Users} value="4" label="Nuevos Contactos" trend="0%" />
         <StatCard icon={Calendar} value="100%" label="Tasa Respuesta" trend="0%" />
       </div>
-
-      {/* Middle Row: Chart & Channels */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        
-        {/* Chart Section */}
         <motion.div variants={itemVariants} className="lg:col-span-2 bg-[#1c2938] border border-white/5 rounded-xl p-5 shadow-lg flex flex-col justify-between">
           <div className="flex justify-between items-center mb-4">
             <div>
@@ -1114,10 +980,7 @@ const DashboardView = () => {
                 <button className="w-6 h-6 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors"><ChevronRight size={12} className="text-gray-400" /></button>
             </div>
           </div>
-          
-          {/* Chart Area - Corrected Overflow */}
           <div className="h-48 w-full relative pt-4 pb-6">
-            {/* Grid Lines */}
             <div className="absolute inset-0 flex flex-col justify-between text-[9px] text-gray-600 font-medium pb-6 pointer-events-none z-0 px-1">
                 <div className="border-b border-white/5 w-full h-px relative"><span className="absolute -top-3 right-0 text-white/10">2.0</span></div>
                 <div className="border-b border-white/5 w-full h-px relative"><span className="absolute -top-3 right-0 text-white/10">1.5</span></div>
@@ -1125,8 +988,6 @@ const DashboardView = () => {
                 <div className="border-b border-white/5 w-full h-px relative"><span className="absolute -top-3 right-0 text-white/10">0.5</span></div>
                 <div className="border-b border-white/5 w-full h-px relative"><span className="absolute -top-3 right-0 text-white/10">0</span></div>
             </div>
-            
-            {/* The Green Line Curve (SVG) */}
             <svg className="w-full h-full absolute inset-0 z-10 overflow-visible" viewBox="0 0 100 100" preserveAspectRatio="none">
                <defs>
                  <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
@@ -1141,7 +1002,6 @@ const DashboardView = () => {
                     </feMerge>
                  </filter>
                </defs>
-               
                <path 
                   d="M0,10 C 10,10 15,90 30,90 L 100,90" 
                   fill="none" 
@@ -1159,8 +1019,6 @@ const DashboardView = () => {
                />
                <circle cx="0" cy="10" r="1.5" fill="#27bea5" stroke="#1c2938" strokeWidth="0.5" vectorEffect="non-scaling-stroke" />
             </svg>
-            
-            {/* X Axis Labels */}
             <div className="absolute bottom-0 left-0 right-0 flex justify-between text-[9px] text-gray-500 font-medium px-1 pt-2">
                <span>lun 29</span>
                <span>mar 30</span>
@@ -1172,14 +1030,11 @@ const DashboardView = () => {
             </div>
           </div>
         </motion.div>
-
-        {/* Channels Section */}
         <motion.div variants={itemVariants} className="bg-[#1c2938] border border-white/5 rounded-xl p-5 shadow-lg flex flex-col h-full">
           <div className="flex items-center gap-2 mb-4 shrink-0">
              <Activity size={14} className="text-gray-400" />
              <h3 className="text-sm font-bold text-white">Canales</h3>
           </div>
-          
           <div className="space-y-3 flex-1">
              <div className="bg-[#16202c] rounded-lg p-3 flex items-center justify-between border border-white/5 gap-3">
                 <div className="flex items-center gap-3 min-w-0">
@@ -1195,7 +1050,6 @@ const DashboardView = () => {
                    Conectado
                 </span>
              </div>
-
              <div className="bg-[#16202c] rounded-lg p-3 flex items-center justify-between border border-white/5 gap-3">
                 <div className="flex items-center gap-3 min-w-0">
                    <div className="w-8 h-8 rounded-full bg-[#27bea5]/10 flex items-center justify-center text-[#27bea5] shrink-0">
@@ -1212,15 +1066,10 @@ const DashboardView = () => {
              </div>
           </div>
         </motion.div>
-
       </div>
-
-      {/* Bottom Row: Top Agents */}
       <motion.div variants={itemVariants} className="pt-2">
          <h3 className="text-sm font-bold text-white mb-4">Top Desempeño por Agente</h3>
          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            
-            {/* Agent Card 1 */}
             <div className="bg-[#1c2938] border border-white/5 rounded-xl p-4 flex flex-col gap-4">
                <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-lg bg-[#0d9488] flex items-center justify-center text-white font-bold text-lg relative">
@@ -1260,8 +1109,6 @@ const DashboardView = () => {
                   </div>
                </div>
             </div>
-
-            {/* Agent Card 2 */}
             <div className="bg-[#1c2938] border border-white/5 rounded-xl p-4 flex flex-col gap-4">
                <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-lg bg-[#27bea5] flex items-center justify-center text-white font-bold text-lg relative">
@@ -1300,7 +1147,6 @@ const DashboardView = () => {
                   </div>
                </div>
             </div>
-
          </div>
       </motion.div>
     </motion.div>
@@ -1322,7 +1168,6 @@ const MenuItem: React.FC<MenuItemProps> = ({ icon, label, active, onClick, index
       active ? 'bg-white/10 text-white' : 'text-gray-400 hover:text-white hover:bg-white/5'
     }`}
   >
-     {/* Sequential Glow Effect */}
      <motion.div
         className="absolute inset-0 rounded-xl border border-[#27bea5] shadow-[0_0_12px_rgba(39,190,165,0.4)] pointer-events-none"
         initial={{ opacity: 0 }}
@@ -1330,12 +1175,11 @@ const MenuItem: React.FC<MenuItemProps> = ({ icon, label, active, onClick, index
         transition={{
             duration: 1.5,
             times: [0, 0.5, 1],
-            delay: 1 + (index * 1.5), // Sequential delay
+            delay: 1 + (index * 1.5), 
             repeat: Infinity,
-            repeatDelay: (6 * 1.5) - 1.5 // Wait for cycle to complete
+            repeatDelay: (6 * 1.5) - 1.5 
         }}
      />
-
     <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-transform group-hover:scale-110 relative z-10 ${
         active ? 'bg-[#27bea5] text-white shadow-lg shadow-[#27bea5]/20' : 'bg-[#1c2938] border border-white/10'
     }`}>
@@ -1351,7 +1195,6 @@ const Hero: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'dashboard' | 'chats' | 'prospects' | 'agents' | 'team' | 'channels'>('chats'); 
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Navigation Configuration
   const navSections = [
     {
       title: 'General',
@@ -1376,17 +1219,14 @@ const Hero: React.FC = () => {
     }
   ];
 
-  // Auto-scroll to bottom of chat
   useEffect(() => {
     if (activeTab === 'chats' && scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
   }, [messages, isTyping, activeTab]);
 
-  // Conversation Simulation Loop
   useEffect(() => {
     let isCancelled = false;
-    // ... existing chat logic ...
     const sequence = [
       { type: 'wait', duration: 1000 },
       { type: 'typing', role: 'user', duration: 1500 },
@@ -1400,7 +1240,7 @@ const Hero: React.FC = () => {
       { type: 'wait', duration: 1000 },
       { type: 'typing', role: 'user', duration: 1500 },
       { type: 'message', role: 'user', text: "Agendar una demo, por favor." },
-      { type: 'wait', duration: 5000 }, // Pause before restart
+      { type: 'wait', duration: 5000 }, 
       { type: 'reset' }
     ];
 
@@ -1420,65 +1260,45 @@ const Hero: React.FC = () => {
 
   return (
     <section id="hero" className="relative pt-28 pb-16 md:pt-48 md:pb-32 overflow-hidden bg-konsul-950">
-      
-      {/* --- NEW BACKGROUND IMAGE --- */}
       <div className="absolute top-0 left-0 w-full h-[100vh] max-h-[1200px] overflow-hidden z-0 pointer-events-none">
-          {/* 
-              Using object-cover to satisfy "full width" requirement on all screens.
-              Added opacity-100 to show vivid colors.
-              Added mt-24 md:mt-0 to push image down on mobile so header doesn't cover face.
-          */}
           <img 
             src="https://konsul.digital/wp-content/uploads/2025/12/Gemini_Generated_Image_x41m0wx41m0wx41m-scaled.avif" 
             alt="Konsul Background" 
+            width="2560"
+            height="1440"
+            // Use fetchPriority="high" (camelCase for React)
+            fetchPriority="high"
             className="w-full h-full object-cover object-top opacity-100 mt-24 md:mt-0"
           />
-          
-          {/* 
-              Radial Gradient for Text Readability:
-              Centered 'ellipse_at_center' to create shadow behind the main text (middle of screen),
-              leaving the top (face area) clear at 100% opacity.
-          */}
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(28,41,56,0.95)_0%,transparent_60%)]" />
-
-          {/* Top Fade (Blending with Header) - Removed blur on desktop */}
           <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#1c2938] via-[#1c2938]/80 to-transparent backdrop-blur-[2px] md:backdrop-blur-none" />
-          
-          {/* Bottom Fade: Removed blur on desktop */}
           <div className="absolute bottom-0 left-0 right-0 h-[30vh] md:h-[40vh] bg-gradient-to-t from-[#1c2938] via-[#1c2938]/90 to-transparent backdrop-blur-[2px] md:backdrop-blur-none" />
       </div>
 
-      {/* Ambient Blob - Increased brightness/opacity slightly */}
       <div className="absolute bottom-0 right-0 w-[400px] md:w-[800px] h-[300px] md:h-[600px] bg-[#27bea5]/20 rounded-full blur-[80px] md:blur-[120px] -z-10" />
 
       <div className="container mx-auto px-4 md:px-6 max-w-7xl relative z-10">
         <div className="flex flex-col items-center text-center max-w-5xl mx-auto">
           
-          {/* Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            // Changed from mt-[12vh] to mt-[10vh] to better center within image face area on mobile
             className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[1.1] mb-6 md:mb-8 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60 mt-[10vh] md:mt-0"
           >
             Convierte conversaciones <br />
             <span className="text-white">en clientes leales.</span>
           </motion.h1>
 
-          {/* Subheadline */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            // Reduced margin from mt-2 to mt-0 (essentially removed) to tighten spacing
-            // CHANGED: text-gray-400 -> text-gray-200 for better visibility
             className="text-base sm:text-lg md:text-xl text-gray-200 font-normal mb-8 md:mb-10 max-w-3xl leading-relaxed px-4 md:px-0 mt-0 md:mt-0"
           >
             Centraliza WhatsApp, Instagram y Messenger en una sola bandeja. Automatiza ventas con IA, lanza campañas masivas y gestiona a todo tu equipo de soporte en un solo lugar.
           </motion.p>
 
-          {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -1493,7 +1313,6 @@ const Hero: React.FC = () => {
             </Button>
           </motion.div>
 
-          {/* Badge - MOVED BELOW BUTTONS */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -1504,7 +1323,6 @@ const Hero: React.FC = () => {
             La plataforma #1 de Comercio Conversacional
           </motion.div>
 
-          {/* Social Proof / Trust */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -1523,6 +1341,9 @@ const Hero: React.FC = () => {
                     key={logo.name}
                     src={logo.src}
                     alt={`${logo.name} logo`}
+                    width="120"
+                    height="40"
+                    loading="lazy"
                     className="h-8 md:h-10 w-auto object-contain opacity-40 hover:opacity-100 grayscale hover:grayscale-0 transition-all duration-500"
                  />
               ))}
@@ -1530,25 +1351,19 @@ const Hero: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Dashboard Preview (Interactive) */}
         <motion.div
           initial={{ opacity: 0, y: 100, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.5 }}
           className="mt-12 md:mt-20 w-full max-w-[95%] md:max-w-5xl mx-auto relative"
         >
-          {/* Enhanced Glow Effect behind the Dashboard */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[80%] bg-[#27bea5]/30 blur-[100px] rounded-full -z-10 pointer-events-none mix-blend-screen" />
 
-          {/* Main Frame */}
           <div className="relative rounded-2xl md:rounded-2xl bg-[#1c2938] border border-white/10 p-1 md:p-2 shadow-2xl shadow-konsul-500/10 overflow-hidden group">
              
             <div className="aspect-[9/16] sm:aspect-[4/3] md:aspect-[21/9] lg:aspect-[16/9] h-[600px] sm:h-[500px] md:h-auto rounded-xl bg-[#16202c] overflow-hidden relative flex flex-col md:flex-row">
                
-               {/* SIDEBAR (Desktop) */}
                <div className="w-64 border-r border-white/5 bg-[#1c2938] hidden md:flex flex-col flex-shrink-0">
-                  
-                  {/* Active Panel Indicator */}
                   <div className="p-4">
                      <div className="bg-[#16202c] rounded-xl p-3 flex items-center justify-between mb-4 border border-white/5 shadow-lg">
                         <div className="flex items-center gap-3">
@@ -1560,8 +1375,6 @@ const Hero: React.FC = () => {
                         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                      </div>
                   </div>
-
-                  {/* Menu List */}
                   <div className="flex-1 overflow-y-auto px-4 space-y-6">
                      {(() => {
                         let globalItemIndex = 0;
@@ -1586,10 +1399,7 @@ const Hero: React.FC = () => {
                   </div>
                </div>
 
-               {/* RIGHT CONTENT AREA (Switchable) */}
                <div className="flex-1 flex flex-col h-full bg-[#16202c] relative overflow-hidden">
-                  
-                  {/* MOBILE NAV TABS (New) - GRID LAYOUT */}
                   <div className="md:hidden border-b border-white/5 bg-[#1c2938] shrink-0 p-2">
                       <div className="grid grid-cols-3 gap-2">
                           {navSections.flatMap(s => s.items).map((item, index) => (
@@ -1598,7 +1408,6 @@ const Hero: React.FC = () => {
                                 onClick={() => setActiveTab(item.id as any)} 
                                 className="relative p-2 rounded-lg flex flex-col items-center justify-center gap-1 transition-colors group"
                              >
-                               {/* Sequential Glow Effect (Mobile) */}
                                <motion.div
                                   className="absolute inset-0 rounded-lg border border-[#27bea5] shadow-[0_0_8px_rgba(39,190,165,0.4)] pointer-events-none"
                                   initial={{ opacity: 0 }}
@@ -1611,7 +1420,6 @@ const Hero: React.FC = () => {
                                       repeatDelay: (6 * 1.5) - 1.5
                                   }}
                                />
-
                                {activeTab === item.id && (
                                  <motion.div 
                                    layoutId="mobile-tab-bg" 
@@ -1631,8 +1439,6 @@ const Hero: React.FC = () => {
                   </div>
 
                   <AnimatePresence mode="wait">
-                    
-                    {/* VIEW 1: CHATS */}
                     {activeTab === 'chats' && (
                       <motion.div 
                         key="chats"
@@ -1642,12 +1448,13 @@ const Hero: React.FC = () => {
                         transition={{ duration: 0.3 }}
                         className="flex flex-col h-full w-full"
                       >
-                         {/* Chat Header */}
                         <div className="h-16 border-b border-white/5 bg-[#1c2938] flex items-center px-4 gap-3 z-10 shrink-0">
                            <div className="relative shrink-0">
                               <img 
                                  src="https://konsul.digital/wp-content/uploads/2025/07/cropped-3.png" 
                                  alt="Bot Avatar" 
+                                 width="40"
+                                 height="40"
                                  className="w-10 h-10 rounded-full object-cover bg-white p-1"
                               />
                               <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-[#1c2938] rounded-full"></div>
@@ -1658,7 +1465,6 @@ const Hero: React.FC = () => {
                            </div>
                         </div>
 
-                        {/* Messages Area */}
                         <div 
                           ref={scrollRef}
                           className="flex-1 p-4 md:p-6 overflow-y-auto space-y-6 scroll-smooth"
@@ -1677,12 +1483,16 @@ const Hero: React.FC = () => {
                                      <img 
                                        src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" 
                                        alt="User"
+                                       width="40"
+                                       height="40"
                                        className="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover border-2 border-white/10"
                                      />
                                    ) : (
                                      <img 
                                        src="https://konsul.digital/wp-content/uploads/2025/07/cropped-3.png" 
                                        alt="Bot"
+                                       width="40"
+                                       height="40"
                                        className="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover bg-white p-1 border-2 border-white/10"
                                      />
                                    )}
@@ -1700,7 +1510,6 @@ const Hero: React.FC = () => {
                             ))}
                           </AnimatePresence>
 
-                          {/* Typing Indicator */}
                           <AnimatePresence>
                             {isTyping && (
                               <motion.div
@@ -1714,12 +1523,16 @@ const Hero: React.FC = () => {
                                      <img 
                                        src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" 
                                        alt="User"
+                                       width="40"
+                                       height="40"
                                        className="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover border-2 border-white/10 opacity-70"
                                      />
                                    ) : (
                                      <img 
                                        src="https://konsul.digital/wp-content/uploads/2025/07/cropped-3.png" 
                                        alt="Bot"
+                                       width="40"
+                                       height="40"
                                        className="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover bg-white p-1 border-2 border-white/10 opacity-70"
                                      />
                                    )}
@@ -1738,7 +1551,6 @@ const Hero: React.FC = () => {
                           </AnimatePresence>
                         </div>
 
-                        {/* Input area */}
                         <div className="p-3 md:p-4 border-t border-white/5 bg-[#1c2938] shrink-0">
                            <div className="w-full h-10 md:h-12 bg-[#15202b] rounded-xl border border-white/5 flex items-center px-4 justify-between">
                               <div className="h-1.5 md:h-2 w-1/3 bg-gray-700/50 rounded" />
@@ -1750,19 +1562,10 @@ const Hero: React.FC = () => {
                       </motion.div>
                     )}
 
-                    {/* VIEW 2: DASHBOARD */}
                     {activeTab === 'dashboard' && <DashboardView key="dashboard" />}
-
-                    {/* VIEW 3: PROSPECTS */}
                     {activeTab === 'prospects' && <ProspectsView key="prospects" />}
-
-                    {/* VIEW 4: AGENTS */}
                     {activeTab === 'agents' && <AgentsView key="agents" />}
-                    
-                    {/* VIEW 5: TEAM */}
                     {activeTab === 'team' && <TeamView key="team" />}
-
-                    {/* VIEW 6: CHANNELS */}
                     {activeTab === 'channels' && <ChannelsView key="channels" />}
 
                   </AnimatePresence>

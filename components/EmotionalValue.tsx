@@ -10,6 +10,9 @@ const Card = ({ title, value, label, img, darkBorder = false }: { title: string,
       <img 
         src={img} 
         alt={title} 
+        width="320"
+        height="450"
+        loading="lazy"
         // object-cover: Occupies full background
         // object-center: Centers the image content
         // opacity-100: Real colors

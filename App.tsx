@@ -1,13 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense, lazy } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import Features from './components/Features';
-import EmotionalValue from './components/EmotionalValue';
-import Integrations from './components/Integrations';
-import Pricing from './components/Pricing';
-import Footer from './components/Footer';
-import CallToAction from './components/CallToAction';
 import MobileNavBar from './components/MobileNavBar';
+
+// Lazy load components below the fold to minimize main thread work on initial load
+const Features = lazy(() => import('./components/Features'));
+const EmotionalValue = lazy(() => import('./components/EmotionalValue'));
+const Integrations = lazy(() => import('./components/Integrations'));
+const Pricing = lazy(() => import('./components/Pricing'));
+const Footer = lazy(() => import('./components/Footer'));
+const CallToAction = lazy(() => import('./components/CallToAction'));
 
 const App: React.FC = () => {
   // Smooth scroll implementation
@@ -24,20 +26,35 @@ const App: React.FC = () => {
       <Header />
       <main>
         <Hero />
-        <EmotionalValue />
-        <Features />
-        <Integrations />
-        <Pricing />
+        
+        <Suspense fallback={<div className="h-96 w-full" />}>
+          <EmotionalValue />
+        </Suspense>
+        
+        <Suspense fallback={<div className="h-96 w-full" />}>
+          <Features />
+        </Suspense>
+        
+        <Suspense fallback={<div className="h-48 w-full" />}>
+          <Integrations />
+        </Suspense>
+        
+        <Suspense fallback={<div className="h-96 w-full" />}>
+          <Pricing />
+        </Suspense>
         
         {/* Continuous Background Wrapper for CTA and Footer */}
         <div className="relative w-full overflow-hidden bg-[#1c2938]">
           
           {/* Background Image with Blending */}
           <div className="absolute inset-0 w-full h-full pointer-events-none">
-             {/* Image Layer */}
+             {/* Image Layer - added explicit dims and lazy loading */}
              <img 
                src="https://konsul.digital/wp-content/uploads/2025/12/banner-footer-web-2-scaled.avif" 
                alt="" 
+               width="2560"
+               height="1000"
+               loading="lazy"
                className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-screen"
              />
              
@@ -53,8 +70,12 @@ const App: React.FC = () => {
           </div>
           
           <div className="relative z-10">
-            <CallToAction />
-            <Footer />
+            <Suspense fallback={<div className="h-48" />}>
+              <CallToAction />
+            </Suspense>
+            <Suspense fallback={<div className="h-64" />}>
+              <Footer />
+            </Suspense>
           </div>
         </div>
       </main>
