@@ -159,7 +159,7 @@ const EmotionalValue: React.FC = () => {
                     transition={unifiedTransition}
                 >
                       <Card 
-                        title="velocidad de respuesta"
+                        title="Aumenta tú velocidad de respuesta"
                         value="+100%"
                         label="Velocidad"
                         img="https://konsul.digital/wp-content/uploads/2025/12/velocidad-icon.avif"
@@ -179,7 +179,7 @@ const EmotionalValue: React.FC = () => {
                      {/* Card Content */}
                      <div className="w-full h-full relative overflow-hidden rounded-[2rem] md:rounded-[2.5rem] bg-[#1c2938]">
                           <Card 
-                            title="tareas manuales"
+                            title="Automatiza tareas manuales"
                             value="-50%"
                             label="Eficiencia"
                             img="https://konsul.digital/wp-content/uploads/2025/12/eficiencia-icon.avif"
@@ -201,7 +201,7 @@ const EmotionalValue: React.FC = () => {
                     transition={unifiedTransition}
                 >
                       <Card 
-                        title="leads calificados"
+                        title="Genera leads calificados"
                         value="+30%"
                         label="Leads"
                         img="https://konsul.digital/wp-content/uploads/2025/12/leads-icon.avif"
