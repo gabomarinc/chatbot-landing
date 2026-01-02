@@ -21,25 +21,20 @@ const LogoCard: React.FC<{ item: Integration }> = ({ item }) => (
 
 const Integrations: React.FC = () => {
   const row1: Integration[] = [
-    { name: 'Shopify', color: 'bg-green-500', icon: '🛍️' },
+    { name: 'Facebook', color: 'bg-green-500', icon: '👤' },
     { name: 'WhatsApp', color: 'bg-emerald-500', icon: '💬' },
-    { name: 'VTEX', color: 'bg-pink-500', icon: '🚀' },
-    { name: 'HubSpot', color: 'bg-orange-500', icon: '🎯' },
-    { name: 'Tiendanube', color: 'bg-blue-400', icon: '☁️' },
+    { name: 'Web', color: 'bg-pink-500', icon: '🚀' },
+    { name: 'CRMs', color: 'bg-orange-500', icon: '🎯' },
     { name: 'Instagram', color: 'bg-purple-500', icon: '📸' },
-    { name: 'Zoho', color: 'bg-yellow-500', icon: '📊' },
-    { name: 'WooCommerce', color: 'bg-violet-500', icon: '🛒' },
   ];
 
   const row2: Integration[] = [
-    { name: 'Salesforce', color: 'bg-blue-600', icon: '☁️' },
-    { name: 'Zendesk', color: 'bg-green-600', icon: '🎧' },
+    { name: 'Paguelo Fácil', color: 'bg-blue-600', icon: '💸' },
+    { name: 'Kônsul Bills', color: 'bg-green-600', icon: '📊' },
     { name: 'Stripe', color: 'bg-indigo-500', icon: '💳' },
-    { name: 'Facebook', color: 'bg-blue-500', icon: '👤' },
     { name: 'Zapier', color: 'bg-orange-600', icon: '⚡' },
-    { name: 'MercadoLibre', color: 'bg-yellow-400', icon: '🤝' },
-    { name: 'Google Sheets', color: 'bg-green-400', icon: '📊' },
-    { name: 'Mailchimp', color: 'bg-yellow-400', icon: '🐵' },
+    { name: 'Google Calendar', color: 'bg-yellow-400', icon: '📅' },
+    { name: 'Google Sheets', color: 'bg-green-400', icon: '🗂️' },
   ];
 
   return (
@@ -53,16 +48,20 @@ const Integrations: React.FC = () => {
           <span className="text-gray-500">tu ecosistema digital.</span>
         </h2>
         <p className="text-base sm:text-xl text-gray-400 mb-8 md:mb-10 max-w-2xl mx-auto font-normal">
-          Sincroniza tus catálogos, pedidos y CRM en tiempo real. Integraciones nativas con las plataformas líderes de E-commerce y CRM.
+          Los agentes IA se integran con los canales que tus clientes ya usan. Sin complicaciones, sin límites.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           {/* Updated button colors */}
+          <a href="https://calendly.com/wearekonsul/konsul-ecosistema-ia">
           <Button variant="primary" className="text-white bg-[#27bea5] hover:bg-[#1fa992]">
-            Ver todas las integraciones
+            Agendar una llamada
           </Button>
+          </a>
+          <a href="https://konsul.digital">
           <Button variant="outline" icon={<ArrowRight size={16} />}>
-            Documentación API
+            Ver más productos
           </Button>
+          </a>
         </div>
       </div>
 
