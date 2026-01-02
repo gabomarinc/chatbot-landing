@@ -14,7 +14,7 @@ const Header: React.FC = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Chatbot', href: '#hero' },
+    { name: 'Chatbot IA', href: '#hero' },
     { name: 'Producto', href: '#features' },
     { name: 'Soluciones', href: '#emotional' },
     { name: 'Precios', href: '#pricing' },
