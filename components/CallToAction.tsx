@@ -14,12 +14,16 @@ const CallToAction: React.FC = () => {
           Agenda una llamada y descubre cómo puedes automatizar tus conversaciones y acelerar tus resultados.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <a href="https://konsul.digital/chatbot-demo"
           <Button size="lg" className="px-12 bg-[#27bea5] text-white hover:bg-[#1fa992]">
-            Prueba Gratis 14 Días
+            Prueba el DEMO
           </Button>
+          </a>
+          <a href="https://calendly.com/wearekonsul/konsul-ecosistema-ia">
           <Button size="lg" variant="outline" className="px-12">
-            Agendar Demo
+            Agendar una llamada
           </Button>
+          </a>
         </div>
       </div>
     </section>
