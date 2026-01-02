@@ -21,7 +21,7 @@ const LogoCard: React.FC<{ item: Integration }> = ({ item }) => (
 
 const Integrations: React.FC = () => {
   const row1: Integration[] = [
-    { name: 'Facebook', color: 'bg-green-500', icon: '👤' },
+    { name: 'Facebook', color: 'bg-blue-600', icon: '👤' },
     { name: 'WhatsApp', color: 'bg-emerald-500', icon: '💬' },
     { name: 'Web', color: 'bg-pink-500', icon: '🚀' },
     { name: 'CRMs', color: 'bg-orange-500', icon: '🎯' },
@@ -29,7 +29,7 @@ const Integrations: React.FC = () => {
   ];
 
   const row2: Integration[] = [
-    { name: 'Paguelo Fácil', color: 'bg-blue-600', icon: '💸' },
+    { name: 'Paguelo Fácil', color: 'bg-green-500', icon: '💸' },
     { name: 'Kônsul Bills', color: 'bg-green-600', icon: '📊' },
     { name: 'Stripe', color: 'bg-indigo-500', icon: '💳' },
     { name: 'Zapier', color: 'bg-orange-600', icon: '⚡' },
@@ -44,7 +44,7 @@ const Integrations: React.FC = () => {
 
       <div className="container mx-auto px-6 text-center mb-12 md:mb-16 relative z-10">
         <h2 className="text-3xl sm:text-4xl md:text-6xl font-black mb-4 md:mb-6 tracking-tighter">
-          Conecta Konsul con <br className="hidden md:block" />
+          Conecta Kônsul con <br className="hidden md:block" />
           <span className="text-gray-500">tu ecosistema digital.</span>
         </h2>
         <p className="text-base sm:text-xl text-gray-400 mb-8 md:mb-10 max-w-2xl mx-auto font-normal">
