@@ -1305,9 +1305,11 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="flex flex-col sm:flex-row items-center gap-3 md:gap-4 w-full sm:w-auto px-6 sm:px-0 mb-8"
           >
+            <a href="https://calendly.com/wearekonsul/konsul-ecosistema-ia">
             <Button size="lg" icon={<ArrowRight size={18} />} className="w-full sm:w-auto">
               Agenda una llamada
             </Button>
+            </a>
             <Button variant="outline" size="lg" icon={<MessageSquare size={18} />} className="w-full sm:w-auto">
               Probar DEMO
             </Button>
@@ -1370,7 +1372,7 @@ const Hero: React.FC = () => {
                             <div className="w-8 h-8 bg-[#27bea5] rounded-lg flex items-center justify-center">
                                 <LayoutGrid size={16} className="text-white" />
                             </div>
-                            <span className="font-bold text-white text-sm">Konsul</span>
+                            <span className="font-bold text-white text-sm">Kônsul</span>
                         </div>
                         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                      </div>
