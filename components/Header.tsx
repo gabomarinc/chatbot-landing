@@ -98,10 +98,12 @@ const Header: React.FC = () => {
           <a href="https://chatbot.konsul.digital/" className="hidden md:block text-sm font-medium text-white hover:text-[#27bea5] transition-colors">
             Login
           </a>
-          <Button href="https://calendly.com/wearekonsul/konsul-ecosistema-ia" size="sm" className="bg-[#27bea5] text-white hover:bg-[#1fa992] border-none shadow-none rounded-full px-5 md:px-6">
+          <a href="https://calendly.com/wearekonsul/konsul-ecosistema-ia">
+          <Button size="sm" className="bg-[#27bea5] text-white hover:bg-[#1fa992] border-none shadow-none rounded-full px-5 md:px-6">
             <span className="hidden md:inline">Agendar Demo</span>
             <span className="md:hidden">Demo</span>
           </Button>
+          </a>
         </div>
 
       </motion.div>
