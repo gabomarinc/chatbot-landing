@@ -1305,14 +1305,16 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="flex flex-col sm:flex-row items-center gap-3 md:gap-4 w-full sm:w-auto px-6 sm:px-0 mb-8"
           >
-            <a href="https://calendly.com/wearekonsul/konsul-ecosistema-ia">
+            <a href="https://calendly.com/wearekonsul/konsul-ecosistema-ia" target="_blank">
             <Button size="lg" icon={<ArrowRight size={18} />} className="w-full sm:w-auto">
               Agenda una llamada
             </Button>
             </a>
+            <a href="https://meet.google.com/qui-xibr-qxm" target="_blank">
             <Button variant="outline" size="lg" icon={<MessageSquare size={18} />} className="w-full sm:w-auto">
               Probar DEMO
             </Button>
+            </a>
           </motion.div>
 
           <motion.div
