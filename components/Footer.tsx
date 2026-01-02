@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
           {/* Newsletter Section (Left) */}
           <div className="lg:col-span-4 space-y-6">
             <div>
-                <h3 className="text-white font-medium mb-2">Recibe el boletín semanal de Konsul</h3>
+                <h3 className="text-white font-medium mb-2">Descubre los secretos de como lanzar, crecer y optimizar un negocio</h3>
                 <div className="relative max-w-sm">
                     <div className="flex items-center bg-[#16202c] border border-white/10 rounded-full p-1 pl-4 focus-within:border-[#27bea5] transition-colors">
                         <Mail size={16} className="text-gray-500 mr-2" />
@@ -55,35 +55,32 @@ const Footer: React.FC = () => {
             <div>
               <h4 className="font-bold text-gray-400 text-sm mb-4">General</h4>
               <ul className="space-y-3 text-sm font-medium">
-                <li><a href="#" className="text-white hover:text-[#27bea5] transition-colors">Nosotros</a></li>
-                <li><a href="#" className="text-white hover:text-[#27bea5] transition-colors">Únete</a></li>
-                <li><a href="#" className="text-white hover:text-[#27bea5] transition-colors">Eventos</a></li>
-                <li><a href="#" className="text-white hover:text-[#27bea5] transition-colors">Blog</a></li>
+                <li><a href="https://konsul.digital/conoce-quienes-somos/" className="text-white hover:text-[#27bea5] transition-colors">Conócenos</a></li>
+                <li><a href="https://konsul.digital/conoce-ecosistema-konsul-ia/" className="text-white hover:text-[#27bea5] transition-colors">Ecosistema</a></li>
+                <li><a href="https://konsul.digital/blog-recursos-y-guias/" className="text-white hover:text-[#27bea5] transition-colors">Recursos y guías</a></li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold text-gray-400 text-sm mb-4">Producto</h4>
               <ul className="space-y-3 text-sm font-medium">
-                <li><a href="#" className="text-white hover:text-[#27bea5] transition-colors">Comprar</a></li>
-                <li><a href="#" className="text-white hover:text-[#27bea5] transition-colors">Vender</a></li>
-                <li><a href="#" className="text-white hover:text-[#27bea5] transition-colors">Cambiar</a></li>
-                <li><a href="#" className="text-white hover:text-[#27bea5] transition-colors">Earn</a></li>
+                <li><a href="#chatbot" className="text-white hover:text-[#27bea5] transition-colors">Chatbot IA</a></li>
+                <li><a href="https://konsul.digital/soluciones-empresariales/" className="text-white hover:text-[#27bea5] transition-colors">Soluciones empresariales</a></li>
+                <li><a href="https://konsul.digital/herramientas-autonomas/" className="text-white hover:text-[#27bea5] transition-colors">Herramientas autónomas</a></li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold text-gray-400 text-sm mb-4">Legal</h4>
               <ul className="space-y-3 text-sm font-medium">
-                <li><a href="#" className="text-white hover:text-[#27bea5] transition-colors">Legal Hub</a></li>
-                <li><a href="#" className="text-white hover:text-[#27bea5] transition-colors">Términos</a></li>
-                <li><a href="#" className="text-white hover:text-[#27bea5] transition-colors">Privacidad</a></li>
-                <li><a href="#" className="text-white hover:text-[#27bea5] transition-colors">Cookies</a></li>
+                <li><a href="https://konsul.digital/terminos-y-condiciones/" className="text-white hover:text-[#27bea5] transition-colors">Términos</a></li>
+                <li><a href="https://konsul.digital/politica-de-privacidad-konsul/" className="text-white hover:text-[#27bea5] transition-colors">Privacidad</a></li>
+                <li><a href="https://konsul.digital/politica-de-cookies/" className="text-white hover:text-[#27bea5] transition-colors">Cookies</a></li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold text-gray-400 text-sm mb-4">Ayuda</h4>
               <ul className="space-y-3 text-sm font-medium">
-                <li><a href="#" className="text-white hover:text-[#27bea5] transition-colors">Soporte</a></li>
-                <li><a href="#" className="text-white hover:text-[#27bea5] transition-colors">FAQ</a></li>
+                <li><a href="mailto:somos@konsul.digital" className="text-white hover:text-[#27bea5] transition-colors">somos@konsul.digital</a></li>
+                <li><a href="https://konsul.digital/" className="text-white hover:text-[#27bea5] transition-colors">FAQ</a></li>
               </ul>
             </div>
           </div>
@@ -110,7 +107,7 @@ const Footer: React.FC = () => {
         {/* Bottom Legal Text */}
         <div className="border-t border-white/5 pt-8">
            <p className="text-xs text-gray-500 leading-relaxed max-w-5xl">
-             Konsul Digital S.L. (proveedor de la aplicación Konsul) está registrada como Proveedor de Servicios de Software y Automatización con el número de registro D945 y como Partner Oficial de Meta en el directorio de soluciones empresariales. El uso de la plataforma conlleva la aceptación de nuestros términos y condiciones de servicio. La automatización de ventas requiere supervisión humana para asegurar la calidad en la atención al cliente.
+             © 2025 Kônsul — Ecosistema de automatización y productividad. Todos los derechos reservados.
            </p>
         </div>
 
