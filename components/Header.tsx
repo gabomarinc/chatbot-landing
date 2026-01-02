@@ -95,11 +95,11 @@ const Header: React.FC = () => {
 
         {/* Actions - z-20 */}
         <div className="flex items-center gap-4 shrink-0 z-20 relative">
-          <a href="#" className="hidden md:block text-sm font-medium text-white hover:text-[#27bea5] transition-colors">
+          <a href="https://chatbot.konsul.digital/" className="hidden md:block text-sm font-medium text-white hover:text-[#27bea5] transition-colors">
             Login
           </a>
-          <Button size="sm" className="bg-[#27bea5] text-white hover:bg-[#1fa992] border-none shadow-none rounded-full px-5 md:px-6">
-            <span className="hidden md:inline">Solicitar Demo</span>
+          <Button href="https://calendly.com/wearekonsul/konsul-ecosistema-ia" size="sm" className="bg-[#27bea5] text-white hover:bg-[#1fa992] border-none shadow-none rounded-full px-5 md:px-6">
+            <span className="hidden md:inline">Agendar Demo</span>
             <span className="md:hidden">Demo</span>
           </Button>
         </div>
