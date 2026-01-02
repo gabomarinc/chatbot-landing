@@ -6,23 +6,23 @@ const Pricing: React.FC = () => {
   const plans = [
     {
       name: "Starter",
-      price: "$49",
-      desc: "Para pequeñas empresas que inician.",
-      features: ["Hasta 1,000 conversaciones", "1 Canal (Web)", "Soporte por Email", "Configuración básica"],
+      price: "$135",
+      desc: "Ideal para PYMES que inician a automatizar.",
+      features: ["Hasta 2,500 conversaciones al mes", "2 Agente IA", "Integración con Web, WhatsApp, Instagram y Facebook", "Soporte por Email y Chat", "Panel de Analítica"],
       highlight: false
     },
     {
       name: "Business",
-      price: "$149",
-      desc: "El estándar para escalar.",
-      features: ["Conversaciones ilimitadas", "Omnicanal (WhatsApp + FB)", "Dashboard Avanzado", "Integración CRM", "Soporte Prioritario"],
+      price: "$245",
+      desc: "El favorito de empresas listas para escalar.",
+      features: ["Hasta 7,500 conversaciones al mes", "4 Agente IA", "Integración con Web, WhatsApp, Instagram y Facebook", "Soporte prioritario por Email y Chat", "Panel de Analítica"],
       highlight: true
     },
     {
       name: "Enterprise",
-      price: "Custom",
-      desc: "Potencia total sin límites.",
-      features: ["API Personalizada", "Gestor de cuenta dedicado", "SLA 99.9%", "Entrenamiento de IA a medida", "Seguridad Avanzada"],
+      price: "$475",
+      desc: "Potencia total para tu negocio.",
+      features: ["Hasta 20,000 conversaciones al mes", "6 Agente IA", "Integración con Web, WhatsApp, Instagram y Facebook", "Soporte prioritario por Email, Chat y videollamada", "Panel de Analítica"],
       highlight: false
     }
   ];
@@ -33,6 +33,7 @@ const Pricing: React.FC = () => {
         <div className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4">Planes Simples</h2>
           <p className="text-gray-400 font-normal">Sin costos ocultos. Cancela cuando quieras.</p>
+          <p className="text-gray-400 font-normal">Costo de Implementación $1,500.00</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
