@@ -1296,7 +1296,7 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-base sm:text-lg md:text-xl text-gray-200 font-normal mb-8 md:mb-10 max-w-3xl leading-relaxed px-4 md:px-0 mt-0 md:mt-0"
           >
-            Centraliza WhatsApp, Instagram y Messenger en una sola bandeja. Automatiza ventas con IA, lanza campañas masivas y gestiona a todo tu equipo de soporte en un solo lugar.
+            Centraliza WhatsApp, Instagram y Messenger en una sola bandeja. Automatiza tus ventas y atención al cliente con Agentes de IA que atienden, aprenden y convierten.
           </motion.p>
 
           <motion.div
@@ -1306,10 +1306,10 @@ const Hero: React.FC = () => {
             className="flex flex-col sm:flex-row items-center gap-3 md:gap-4 w-full sm:w-auto px-6 sm:px-0 mb-8"
           >
             <Button size="lg" icon={<ArrowRight size={18} />} className="w-full sm:w-auto">
-              Prueba Gratis 14 Días
+              Agenda una llamada
             </Button>
             <Button variant="outline" size="lg" icon={<MessageSquare size={18} />} className="w-full sm:w-auto">
-              Hablar con Ventas
+              Probar DEMO
             </Button>
           </motion.div>
 
