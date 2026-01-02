@@ -52,12 +52,12 @@ const Integrations: React.FC = () => {
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           {/* Updated button colors */}
-          <a href="https://calendly.com/wearekonsul/konsul-ecosistema-ia">
+          <a href="https://calendly.com/wearekonsul/konsul-ecosistema-ia" target="_blank">
           <Button variant="primary" className="text-white bg-[#27bea5] hover:bg-[#1fa992]">
             Agendar una llamada
           </Button>
           </a>
-          <a href="https://konsul.digital">
+          <a href="https://konsul.digital" target="_blank">
           <Button variant="outline" icon={<ArrowRight size={16} />}>
             Ver más productos
           </Button>
