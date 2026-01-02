@@ -12,7 +12,7 @@ const featuresData = [
     id: 0,
     title: "Atención omnicanal",
     label: "Centralización",
-    description: "Web, WhatsApp, email, redes sociales.",
+    description: "Web, WhatsApp y redes sociales.",
     icon: <Globe className="text-white" size={24} />,
     visual: (
       <div className="relative w-full h-full flex flex-col items-center justify-center px-6">
@@ -64,7 +64,7 @@ const featuresData = [
     id: 1,
     title: "Panel de analítica",
     label: "Datos en Tiempo Real",
-    description: "Métricas y KPIs siempre actualizados.",
+    description: "Decisiones basadas en datos, no en corazonadas.",
     icon: <BarChart3 className="text-white" size={24} />,
     visual: (
       <div className="relative w-full h-full flex items-center justify-center px-6 pb-12">
@@ -342,7 +342,7 @@ const Features: React.FC = () => {
               <span className="text-gray-500">para ventas y soporte.</span>
             </h2>
             <p className="text-base sm:text-lg text-gray-400 mb-8 md:mb-10 leading-relaxed max-w-lg font-normal">
-              Olvídate de usar múltiples herramientas. Konsul integra todo lo que necesitas para escalar tu atención al cliente y ventas por chat.
+              Olvídate de atender manualmente. Kônsul automatiza todo lo que necesitas para escalar tu atención al cliente y ventas por chat.
             </p>
 
             {/* Interactive Feature List */}
