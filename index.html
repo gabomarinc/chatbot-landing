@@ -1,93 +1,119 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-    <meta name="theme-color" content="#1c2938" />
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="Konsul AI">
-    <link rel="manifest" href="/manifest.json">
-    <link rel="apple-touch-icon" href="https://konsul.digital/wp-content/uploads/2025/07/cropped-3.png">
-    
-    <title>Konsul Chatbot - Inteligencia Artificial para tu Negocio</title>
-    
-    <!-- Preload Critical Resources -->
-    <link rel="preload" href="https://konsul.digital/wp-content/uploads/2025/12/Gemini_Generated_Image_x41m0wx41m0wx41m-scaled.avif" as="image">
-    <link rel="preload" href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" as="style">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet">
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Satoshi', 'sans-serif'],
-            },
-            colors: {
-              konsul: {
-                50: '#f0fdfa',
-                100: '#ccfbf1',
-                500: '#14b8a6', // Teal-ish primary
-                600: '#0d9488',
-                900: '#15202b', // Slightly darker than base
-                950: '#1c2938', // NEW BASE COLOR
-              }
-            },
-            animation: {
-              'float': 'float 6s ease-in-out infinite',
-              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-              'scroll-left': 'scroll-left 40s linear infinite',
-              'scroll-right': 'scroll-right 40s linear infinite',
-            },
-            keyframes: {
-              float: {
-                '0%, 100%': { transform: 'translateY(0)' },
-                '50%': { transform: 'translateY(-20px)' },
-              },
-              'scroll-left': {
-                '0%': { transform: 'translateX(0)' },
-                '100%': { transform: 'translateX(-50%)' },
-              },
-              'scroll-right': {
-                '0%': { transform: 'translateX(-50%)' },
-                '100%': { transform: 'translateX(0)' },
-              }
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#1c2938" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Konsul AI">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="https://konsul.digital/wp-content/uploads/2025/07/cropped-3.png">
+
+  <title>Konsul Chatbot - Inteligencia Artificial para tu Negocio</title>
+
+  <!-- Preload Critical Resources -->
+  <link rel="preload"
+    href="https://konsul.digital/wp-content/uploads/2025/12/Gemini_Generated_Image_x41m0wx41m0wx41m-scaled.avif"
+    as="image">
+  <link rel="preload" href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" as="style">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Satoshi', 'sans-serif'],
+          },
+          colors: {
+            konsul: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              500: '#14b8a6', // Teal-ish primary
+              600: '#0d9488',
+              900: '#15202b', // Slightly darker than base
+              950: '#1c2938', // NEW BASE COLOR
             }
           },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'scroll-left': 'scroll-left 40s linear infinite',
+            'scroll-right': 'scroll-right 40s linear infinite',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-20px)' },
+            },
+            'scroll-left': {
+              '0%': { transform: 'translateX(0)' },
+              '100%': { transform: 'translateX(-50%)' },
+            },
+            'scroll-right': {
+              '0%': { transform: 'translateX(-50%)' },
+              '100%': { transform: 'translateX(0)' },
+            }
+          }
         },
-      }
-    </script>
-    <style>
-      body {
-        background-color: #1c2938;
-        color: #ffffff;
-        -webkit-font-smoothing: antialiased;
-        -webkit-tap-highlight-color: transparent;
-        overscroll-behavior-y: none; /* Prevents pull-to-refresh effect which feels web-like */
-      }
-      /* Custom scrollbar to match premium feel */
+      },
+    }
+  </script>
+  <style>
+    body {
+      background-color: #1c2938;
+      color: #ffffff;
+      -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: transparent;
+      overscroll-behavior-y: none;
+      /* Prevents pull-to-refresh effect which feels web-like */
+    }
+
+    /* Custom scrollbar to match premium feel */
+    ::-webkit-scrollbar {
+      width: 8px;
+      display: none;
+      /* Hide scrollbar for more app-like feel on mobile */
+    }
+
+    @media (min-width: 768px) {
       ::-webkit-scrollbar {
-        width: 8px;
-        display: none; /* Hide scrollbar for more app-like feel on mobile */
+        display: block;
       }
-      @media (min-width: 768px) {
-        ::-webkit-scrollbar {
-          display: block;
-        }
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #1c2938;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #475569;
+    }
+
+    /* Avoid collision between Chatbot and Mobile Nav Bar */
+    @media (max-width: 767px) {
+
+      /* GPTMaker Button Container - Lift it above the mobile menu */
+      div:has(> #click-plug-to-support) {
+        bottom: 100px !important;
+        right: 20px !important;
       }
-      ::-webkit-scrollbar-track {
-        background: #1c2938;
+
+      /* GPTMaker Chat window container */
+      div:has(> iframe[src*="gptmaker.ai"]) {
+        bottom: 160px !important;
       }
-      ::-webkit-scrollbar-thumb {
-        background: #334155;
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #475569;
-      }
-    </style>
+    }
+  </style>
   <script type="importmap">
 {
   "imports": {
@@ -100,8 +126,30 @@
 }
 </script>
 </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="./index.tsx"></script>
-  </body>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="./index.tsx"></script>
+  <script>
+    window.REQUIRED_CODE_ERROR_MESSAGE = 'Elija un código de país';
+    window.LOCALE = 'es';
+    window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "La información que ha proporcionado no es válida. Compruebe el formato del campo e inténtelo de nuevo.";
+    window.REQUIRED_ERROR_MESSAGE = "Este campo no puede quedarse vacío. ";
+    window.GENERIC_INVALID_MESSAGE = "La información que ha proporcionado no es válida. Compruebe el formato del campo e inténtelo de nuevo.";
+    window.translation = {
+      common: {
+        selectedList: '{quantity} lista seleccionada',
+        selectedLists: '{quantity} listas seleccionadas',
+        selectedOption: '{quantity} seleccionado',
+        selectedOptions: '{quantity} seleccionados',
+      }
+    };
+    var AUTOHIDE = Boolean(0);
+  </script>
+  <script src="https://www.google.com/recaptcha/api.js?render=6LfVwTAsAAAAAGqih1MPoKwpDaBK_rQiyyFPag9Y&hl=es" async
+    defer></script>
+  <!-- GPTMaker Chat Widget -->
+  <script async src="https://app.gptmaker.ai/widget/3E76F75BD0A222B0634A96DA1F24A670/float.js"></script>
+</body>
+
 </html>

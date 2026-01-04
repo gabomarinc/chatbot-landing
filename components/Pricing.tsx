@@ -9,21 +9,24 @@ const Pricing: React.FC = () => {
       price: "$135",
       desc: "Ideal para PYMES que inician a automatizar.",
       features: ["Hasta 2,500 conversaciones al mes", "2 Agente IA", "Integración con Web, WhatsApp, Instagram y Facebook", "Soporte por Email y Chat", "Panel de Analítica"],
-      highlight: false
+      highlight: false,
+      url: "https://wa.link/5mn0sl"
     },
     {
       name: "Business",
       price: "$245",
       desc: "El favorito de empresas listas para escalar.",
       features: ["Hasta 7,500 conversaciones al mes", "4 Agente IA", "Integración con Web, WhatsApp, Instagram y Facebook", "Soporte prioritario por Email y Chat", "Panel de Analítica"],
-      highlight: true
+      highlight: true,
+      url: "https://wa.link/s8lvd4"
     },
     {
       name: "Enterprise",
       price: "$475",
       desc: "Potencia total para tu negocio.",
       features: ["Hasta 20,000 conversaciones al mes", "6 Agente IA", "Integración con Web, WhatsApp, Instagram y Facebook", "Soporte prioritario por Email, Chat y videollamada", "Panel de Analítica"],
-      highlight: false
+      highlight: false,
+      url: "https://wa.link/9awpeg"
     }
   ];
 
@@ -38,13 +41,12 @@ const Pricing: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {plans.map((plan) => (
-            <div 
+            <div
               key={plan.name}
-              className={`rounded-3xl p-5 md:p-8 border flex flex-col ${
-                plan.highlight 
-                  ? 'bg-white/5 border-konsul-500/50 shadow-2xl shadow-konsul-500/10 md:scale-105 z-10' 
+              className={`rounded-3xl p-5 md:p-8 border flex flex-col ${plan.highlight
+                  ? 'bg-white/5 border-konsul-500/50 shadow-2xl shadow-konsul-500/10 md:scale-105 z-10'
                   : 'bg-[#1c2938] border-white/10 hover:border-white/20'
-              } transition-all duration-300`}
+                } transition-all duration-300`}
             >
               <div className="mb-6 md:mb-8">
                 <h3 className="text-xl font-bold text-white mb-2">{plan.name}</h3>
@@ -66,9 +68,10 @@ const Pricing: React.FC = () => {
                 ))}
               </div>
 
-              <Button 
-                variant={plan.highlight ? 'secondary' : 'outline'} 
+              <Button
+                variant={plan.highlight ? 'secondary' : 'outline'}
                 className="w-full"
+                href={plan.url}
               >
                 {plan.price === 'Custom' ? 'Contactar Ventas' : 'Comenzar Ahora'}
               </Button>
