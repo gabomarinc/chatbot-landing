@@ -5,25 +5,33 @@ import { Home, Layers, Zap, MessageCircle, Bot } from 'lucide-react';
 const MobileNavBar: React.FC = () => {
   const [activeTab, setActiveTab] = useState('#root');
 
-  // Update active tab based on scroll position
+  // Update active tab based on scroll position using IntersectionObserver
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = ['#root', '#chatbot-demo', '#features', '#emotional', '#pricing'];
+    const sections = ['root', 'chatbot-demo', 'features', 'emotional', 'pricing'];
+    const observers: IntersectionObserver[] = [];
 
-      // Simple logic to detect which section is in view
-      // In a real app, IntersectionObserver is better, but this works for this structure
-      const scrollPosition = window.scrollY + 300; // Offset
-
-      // This is a simplified detection logic
-      if (window.scrollY < 400) {
-        setActiveTab('#root');
-      } else {
-        // Find the section that is currently visible
-        // Implementation omitted for brevity/performance in simple landing
-      }
+    const observerOptions = {
+      root: null,
+      rootMargin: '-40% 0px -40% 0px', // Center of viewport
+      threshold: 0
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    const handleIntersect = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActiveTab(`#${entry.target.id === 'root' ? 'root' : entry.target.id}`);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(handleIntersect, observerOptions);
+
+    sections.forEach(id => {
+      const el = document.getElementById(id) || (id === 'root' ? document.body : null);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   const navItems = [
@@ -34,17 +42,22 @@ const MobileNavBar: React.FC = () => {
   ];
 
   const handleNavClick = (href: string) => {
-    setActiveTab(href);
-    const element = document.querySelector(href === '#root' ? 'body' : href);
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId === 'root' ? 'root' : targetId) || (targetId === 'root' ? document.body : null);
+
     if (element) {
-      const headerOffset = 110;
+      // Offset calculation for fixed header
+      const headerOffset = 100;
       const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - headerOffset;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
       window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
+        top: targetId === 'root' ? 0 : offsetPosition,
+        behavior: 'smooth'
       });
+
+      // Manually set active tab to provide instant feedback
+      setActiveTab(href);
     }
   };
 

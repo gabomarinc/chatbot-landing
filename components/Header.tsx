@@ -23,17 +23,16 @@ const Header: React.FC = () => {
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    const element = document.querySelector(href);
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId === 'hero' ? 'hero' : targetId) || (targetId === 'hero' ? document.getElementById('hero') : null);
+
     if (element) {
-      // Offset calculation to account for the fixed floating header
-      // The header is roughly 60-80px tall including padding. 
-      // We use 110px to give it breathing room so the section title is clearly visible below the header.
-      const headerOffset = 110;
+      const headerOffset = 100;
       const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - headerOffset;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
       window.scrollTo({
-        top: offsetPosition,
+        top: href === '#hero' ? 0 : offsetPosition,
         behavior: "smooth"
       });
     }
