@@ -109,8 +109,8 @@ const ChannelsView = () => {
                         <div className="flex items-center justify-center md:justify-start gap-3 mb-1">
                            <h3 className="text-lg font-bold text-white">{channel.name}</h3>
                            <span className={`text-[9px] font-bold px-2 py-0.5 rounded-full border ${channel.status === 'CONECTADO'
-                                 ? 'bg-green-500/10 text-green-400 border-green-500/20'
-                                 : 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20'
+                              ? 'bg-green-500/10 text-green-400 border-green-500/20'
+                              : 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20'
                               }`}>
                               {channel.status}
                            </span>
@@ -340,10 +340,10 @@ const TeamView = () => {
                      </div>
                      <div className="hidden md:flex col-span-2">
                         <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold border ${member.roleType === 'owner'
-                              ? 'bg-purple-500/10 text-purple-400 border-purple-500/20'
-                              : member.roleType === 'admin'
-                                 ? 'bg-blue-500/10 text-blue-400 border-blue-500/20'
-                                 : 'bg-gray-500/10 text-gray-400 border-gray-500/20'
+                           ? 'bg-purple-500/10 text-purple-400 border-purple-500/20'
+                           : member.roleType === 'admin'
+                              ? 'bg-blue-500/10 text-blue-400 border-blue-500/20'
+                              : 'bg-gray-500/10 text-gray-400 border-gray-500/20'
                            }`}>
                            {member.roleType === 'owner' && <Shield size={10} />}
                            {member.role}
@@ -411,8 +411,8 @@ const TeamView = () => {
                               <button
                                  key={role}
                                  className={`flex-1 py-2 text-xs font-medium rounded-lg transition-all ${(selectedMember.role === role) || (selectedMember.roleType === 'owner' && role === 'Propietario')
-                                       ? 'bg-[#27bea5] text-white shadow-lg'
-                                       : 'text-gray-400 hover:text-white hover:bg-white/5'
+                                    ? 'bg-[#27bea5] text-white shadow-lg'
+                                    : 'text-gray-400 hover:text-white hover:bg-white/5'
                                     }`}
                               >
                                  {role}
@@ -1304,7 +1304,7 @@ const Hero: React.FC = () => {
                         Agenda una llamada
                      </Button>
                   </a>
-                  <a href="https://meet.google.com/qui-xibr-qxm" target="_blank">
+                  <a href="https://konsul.digital/chatbot-demo" target="_blank">
                      <Button variant="outline" size="lg" icon={<MessageSquare size={18} />} className="w-full sm:w-auto">
                         Probar DEMO
                      </Button>
@@ -1498,8 +1498,8 @@ const Hero: React.FC = () => {
                                              </div>
                                              <div
                                                 className={`p-3 md:p-4 rounded-2xl text-xs md:text-sm max-w-[85%] md:max-w-[80%] leading-relaxed shadow-lg font-normal ${msg.role === 'user'
-                                                      ? 'bg-[#233346] text-gray-200 rounded-tl-none'
-                                                      : 'bg-[#27bea5] text-white rounded-tr-none'
+                                                   ? 'bg-[#233346] text-gray-200 rounded-tl-none'
+                                                   : 'bg-[#27bea5] text-white rounded-tr-none'
                                                    }`}
                                              >
                                                 {msg.text}
@@ -1536,8 +1536,8 @@ const Hero: React.FC = () => {
                                                 )}
                                              </div>
                                              <div className={`p-4 rounded-2xl flex items-center gap-1 h-[48px] md:h-[52px] ${isTyping === 'user'
-                                                   ? 'bg-[#233346]/50 rounded-tl-none'
-                                                   : 'bg-[#27bea5]/50 rounded-tr-none'
+                                                ? 'bg-[#233346]/50 rounded-tl-none'
+                                                : 'bg-[#27bea5]/50 rounded-tr-none'
                                                 }`}>
                                                 <span className="w-1.5 h-1.5 md:w-2 md:h-2 bg-white/50 rounded-full animate-bounce [animation-delay:-0.3s]"></span>
                                                 <span className="w-1.5 h-1.5 md:w-2 md:h-2 bg-white/50 rounded-full animate-bounce [animation-delay:-0.15s]"></span>
