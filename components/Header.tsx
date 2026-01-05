@@ -14,7 +14,7 @@ const Header: React.FC = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Chatbot IA', href: '#hero' },
+    { name: 'Chatbot IA', href: '#chatbot-demo' },
     { name: 'Producto', href: '#features' },
     { name: 'Soluciones', href: '#emotional' },
     { name: 'Precios', href: '#pricing' },
@@ -28,10 +28,10 @@ const Header: React.FC = () => {
       // Offset calculation to account for the fixed floating header
       // The header is roughly 60-80px tall including padding. 
       // We use 110px to give it breathing room so the section title is clearly visible below the header.
-      const headerOffset = 110; 
+      const headerOffset = 110;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - headerOffset;
-  
+
       window.scrollTo({
         top: offsetPosition,
         behavior: "smooth"
@@ -42,11 +42,11 @@ const Header: React.FC = () => {
   return (
     // Increased z-index significantly to ensure it floats above everything (z-[999])
     <header className="fixed top-0 left-0 right-0 z-[999] flex justify-center items-start pt-4 px-4 md:pt-6 pointer-events-none">
-       {/* 
+      {/* 
           pointer-events-none on the container allows clicks to pass through the empty space around the floating bar.
           pointer-events-auto on the bar itself re-enables clicks.
        */}
-      <motion.div 
+      <motion.div
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, type: "spring", damping: 20 }}
@@ -66,17 +66,17 @@ const Header: React.FC = () => {
       >
         {/* Logo Area - z-20 to ensure clickability over absolute nav if overlapping */}
         <div className="flex items-center gap-8 shrink-0 z-20 relative">
-            <a 
-              href="#hero" 
-              onClick={(e) => handleNavClick(e, '#hero')}
-              className="flex items-center gap-2 group cursor-pointer block"
-            >
-            <img 
-                src="https://konsul.digital/wp-content/uploads/2025/07/Logo-en-BW-e1751712792454.png" 
-                alt="Konsul Logo" 
-                className="h-6 md:h-8 w-auto object-contain" 
+          <a
+            href="#hero"
+            onClick={(e) => handleNavClick(e, '#hero')}
+            className="flex items-center gap-2 group cursor-pointer block"
+          >
+            <img
+              src="https://konsul.digital/wp-content/uploads/2025/07/Logo-en-BW-e1751712792454.png"
+              alt="Konsul Logo"
+              className="h-6 md:h-8 w-auto object-contain"
             />
-            </a>
+          </a>
         </div>
 
         {/* Desktop Nav - Centered Absolute - z-10 */}
@@ -99,10 +99,10 @@ const Header: React.FC = () => {
             Login
           </a>
           <a href="https://calendly.com/wearekonsul/konsul-ecosistema-ia" target="_blank">
-          <Button size="sm" className="bg-[#27bea5] text-white hover:bg-[#1fa992] border-none shadow-none rounded-full px-5 md:px-6">
-            <span className="hidden md:inline">Agendar Demo</span>
-            <span className="md:hidden">Demo</span>
-          </Button>
+            <Button size="sm" className="bg-[#27bea5] text-white hover:bg-[#1fa992] border-none shadow-none rounded-full px-5 md:px-6">
+              <span className="hidden md:inline">Agendar Demo</span>
+              <span className="md:hidden">Demo</span>
+            </Button>
           </a>
         </div>
 

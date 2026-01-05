@@ -131,7 +131,7 @@ const Footer: React.FC = () => {
             <div>
               <h4 className="font-bold text-gray-400 text-sm mb-4">Producto</h4>
               <ul className="space-y-3 text-sm font-medium">
-                <li><a href="#chatbot" className="text-white hover:text-[#27bea5] transition-colors">Chatbot IA</a></li>
+                <li><a href="#chatbot-demo" className="text-white hover:text-[#27bea5] transition-colors">Chatbot IA</a></li>
                 <li><a href="https://konsul.digital/soluciones-empresariales/" className="text-white hover:text-[#27bea5] transition-colors">Soluciones empresariales</a></li>
                 <li><a href="https://konsul.digital/herramientas-autonomas/" className="text-white hover:text-[#27bea5] transition-colors">Herramientas autónomas</a></li>
               </ul>

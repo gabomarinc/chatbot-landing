@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Home, Layers, Zap, MessageCircle } from 'lucide-react';
+import { Home, Layers, Zap, MessageCircle, Bot } from 'lucide-react';
 
 const MobileNavBar: React.FC = () => {
   const [activeTab, setActiveTab] = useState('#root');
@@ -8,8 +8,8 @@ const MobileNavBar: React.FC = () => {
   // Update active tab based on scroll position
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['#root', '#features', '#emotional', '#pricing'];
-      
+      const sections = ['#root', '#chatbot-demo', '#features', '#emotional', '#pricing'];
+
       // Simple logic to detect which section is in view
       // In a real app, IntersectionObserver is better, but this works for this structure
       const scrollPosition = window.scrollY + 300; // Offset
@@ -28,23 +28,30 @@ const MobileNavBar: React.FC = () => {
 
   const navItems = [
     { id: '#root', icon: <Home size={22} />, label: 'Inicio' },
-    { id: '#features', icon: <Layers size={22} />, label: 'Features' },
-    { id: '#emotional', icon: <Zap size={22} />, label: 'Solución' },
-    { id: '#pricing', icon: <MessageCircle size={22} />, label: 'Precios' },
+    { id: '#chatbot-demo', icon: <Bot size={22} />, label: 'Chatbot IA' },
+    { id: '#features', icon: <Layers size={22} />, label: 'Producto' },
+    { id: '#emotional', icon: <Zap size={22} />, label: 'Soluciones' },
   ];
 
   const handleNavClick = (href: string) => {
     setActiveTab(href);
     const element = document.querySelector(href === '#root' ? 'body' : href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const headerOffset = 110;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
     }
   };
 
   return (
     <div className="md:hidden fixed bottom-6 left-4 right-4 z-50">
       <div className="absolute inset-0 bg-black/40 backdrop-blur-xl rounded-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]" />
-      
+
       <div className="relative flex justify-around items-center h-16 px-2">
         {navItems.map((item) => {
           const isActive = activeTab === item.id;
@@ -61,9 +68,9 @@ const MobileNavBar: React.FC = () => {
                   transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 />
               )}
-              
+
               <motion.div
-                animate={{ 
+                animate={{
                   y: isActive ? -2 : 0,
                   color: isActive ? '#14b8a6' : '#9ca3af' // konsul-500 vs gray-400
                 }}
@@ -74,7 +81,7 @@ const MobileNavBar: React.FC = () => {
                   {item.label}
                 </span>
               </motion.div>
-              
+
               {isActive && (
                 <motion.div
                   layoutId="mobile-nav-glow"
