@@ -44,8 +44,8 @@ const Pricing: React.FC = () => {
             <div
               key={plan.name}
               className={`rounded-3xl p-5 md:p-8 border flex flex-col ${plan.highlight
-                  ? 'bg-white/5 border-konsul-500/50 shadow-2xl shadow-konsul-500/10 md:scale-105 z-10'
-                  : 'bg-[#1c2938] border-white/10 hover:border-white/20'
+                ? 'bg-white/5 border-konsul-500/50 shadow-2xl shadow-konsul-500/10 md:scale-105 z-10'
+                : 'bg-[#1c2938] border-white/10 hover:border-white/20'
                 } transition-all duration-300`}
             >
               <div className="mb-6 md:mb-8">
@@ -72,6 +72,13 @@ const Pricing: React.FC = () => {
                 variant={plan.highlight ? 'secondary' : 'outline'}
                 className="w-full"
                 href={plan.url}
+                analyticsEvent={{
+                  name: 'pricing_plan_click',
+                  params: {
+                    plan_name: plan.name,
+                    plan_price: plan.price
+                  }
+                }}
               >
                 {plan.price === 'Custom' ? 'Contactar Ventas' : 'Comenzar Ahora'}
               </Button>

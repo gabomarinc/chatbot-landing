@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Instagram, Facebook, Mail, ArrowRight, Youtube, Linkedin } from 'lucide-react';
 import Button from './ui/Button';
+import { trackEvent } from '../analytics';
 
 // Custom Tiktok Icon to match Lucide style
 const TiktokIcon = ({ size = 16, className = "" }) => (
@@ -48,6 +49,7 @@ const Footer: React.FC = () => {
       });
 
       if (response.ok) {
+        trackEvent('newsletter_signup', { email_domain: email.split('@')[1] });
         setStatus('success');
         setEmail('');
       } else {
@@ -174,6 +176,7 @@ const Footer: React.FC = () => {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackEvent('social_click', { network: social.url.includes('instagram') ? 'instagram' : social.url.includes('facebook') ? 'facebook' : social.url.includes('youtube') ? 'youtube' : social.url.includes('tiktok') ? 'tiktok' : 'linkedin' })}
                   className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-[#27bea5] transition-colors"
                 >
                   <social.Icon size={16} />

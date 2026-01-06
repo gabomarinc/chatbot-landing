@@ -98,7 +98,14 @@ const Header: React.FC = () => {
             Login
           </a>
           <a href="https://calendly.com/wearekonsul/konsul-ecosistema-ia" target="_blank">
-            <Button size="sm" className="bg-[#27bea5] text-white hover:bg-[#1fa992] border-none shadow-none rounded-full px-5 md:px-6">
+            <Button
+              size="sm"
+              className="bg-[#27bea5] text-white hover:bg-[#1fa992] border-none shadow-none rounded-full px-5 md:px-6"
+              analyticsEvent={{
+                name: 'header_demo_click',
+                params: { location: 'header' }
+              }}
+            >
               <span className="hidden md:inline">Agendar Demo</span>
               <span className="md:hidden">Demo</span>
             </Button>
