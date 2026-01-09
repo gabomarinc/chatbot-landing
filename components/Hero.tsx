@@ -1327,7 +1327,7 @@ const Hero: React.FC = () => {
                   transition={{ duration: 1, delay: 0.8 }}
                   className="mt-12 md:mt-16 pt-8 border-t border-white/5 w-full"
                >
-                  <p className="text-xs md:text-sm text-gray-500 mb-6 font-normal">Potenciando a las empresas líderes en Latinoamérica</p>
+                  <p className="text-xs md:text-sm text-gray-500 mb-6 font-normal">Hemos participado en potenciar a empresas líderes en la región</p>
                   <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-100 px-4">
                      {[
                         { name: 'Coamco', src: 'https://konsul.digital/wp-content/uploads/2026/01/logoCoamco-1.avif' },
