@@ -1330,10 +1330,10 @@ const Hero: React.FC = () => {
                   <p className="text-xs md:text-sm text-gray-500 mb-6 font-normal">Potenciando a las empresas líderes en Latinoamérica</p>
                   <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-100 px-4">
                      {[
-                        { name: 'Rappi', src: 'https://placehold.co/120x40/1c2938/ffffff?text=Rappi' },
-                        { name: 'Toyota', src: 'https://placehold.co/120x40/1c2938/ffffff?text=Toyota' },
-                        { name: 'Remax', src: 'https://placehold.co/120x40/1c2938/ffffff?text=Remax' },
-                        { name: 'Anahuac', src: 'https://placehold.co/120x40/1c2938/ffffff?text=Anahuac' }
+                        { name: 'Coamco', src: 'https://konsul.digital/wp-content/uploads/2026/01/logoCoamco-1.avif' },
+                        { name: 'Grupo IU', src: 'https://konsul.digital/wp-content/uploads/2026/01/Nuevo-Logo_GrupoIU-Blanco-Transparente.avif' },
+                        { name: 'Panasonic', src: 'https://konsul.digital/wp-content/uploads/2026/01/panasonic-logo-2.avif' },
+                        { name: 'Client', src: 'https://konsul.digital/wp-content/uploads/2026/01/image.avif' }
                      ].map((logo) => (
                         <img
                            key={logo.name}
