@@ -52,11 +52,39 @@
         "ratingCount": "120"
       },
       "offers": {
-        "@type": "Offer",
-        "price": "0.00",
-        "priceCurrency": "USD"
+        "@type": "AggregateOffer",
+        "lowPrice": "135.00",
+        "highPrice": "475.00",
+        "priceCurrency": "USD",
+        "offerCount": "3",
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "Starter",
+            "price": "135.00",
+            "priceCurrency": "USD",
+            "description": "Ideal para PYMES. Incluye 2,500 conversaciones y 2 Agentes IA.",
+            "url": "https://konsul.digital/#pricing"
+          },
+          {
+            "@type": "Offer",
+            "name": "Business",
+            "price": "245.00",
+            "priceCurrency": "USD",
+            "description": "El favorito para escalar. Incluye 7,500 conversaciones y 4 Agentes IA.",
+            "url": "https://konsul.digital/#pricing"
+          },
+          {
+            "@type": "Offer",
+            "name": "Enterprise",
+            "price": "475.00",
+            "priceCurrency": "USD",
+            "description": "Potencia total. Incluye 20,000 conversaciones y 6 Agentes IA.",
+            "url": "https://konsul.digital/#pricing"
+          }
+        ]
       },
-      "description": "Plataforma de inteligencia artificial para automatización de ventas y soporte multicanal."
+      "description": "Plataforma de inteligencia artificial para automatización de ventas y soporte multicanal con agentes personalizados."
     }
   </script>
 
@@ -204,9 +232,42 @@
           <li>Soporte técnico premium.</li>
         </ul>
       </section>
-      <section>
+      <section id="pricing">
         <h2>Planes y Precios</h2>
-        <p>Contamos con planes Flex, Pro y Enterprise diseñados para escalar tu negocio.</p>
+        <p>Costo de Implementación: $1,500.00</p>
+        <article>
+          <h3>Starter - $135/mes</h3>
+          <p>Ideal para PYMES que inician a automatizar.</p>
+          <ul>
+            <li>Hasta 2,500 conversaciones al mes</li>
+            <li>2 Agente IA</li>
+            <li>Integración con Web, WhatsApp, Instagram y Facebook</li>
+            <li>Soporte por Email y Chat</li>
+            <li>Panel de Analítica</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Business - $245/mes</h3>
+          <p>El favorito de empresas listas para escalar.</p>
+          <ul>
+            <li>Hasta 7,500 conversaciones al mes</li>
+            <li>4 Agente IA</li>
+            <li>Integración con Web, WhatsApp, Instagram y Facebook</li>
+            <li>Soporte prioritario por Email y Chat</li>
+            <li>Panel de Analítica</li>
+          </ul>
+        </article>
+        <article>
+          <h3>Enterprise - $475/mes</h3>
+          <p>Potencia total para tu negocio.</p>
+          <ul>
+            <li>Hasta 20,000 conversaciones al mes</li>
+            <li>6 Agente IA</li>
+            <li>Integración con Web, WhatsApp, Instagram y Facebook</li>
+            <li>Soporte prioritario por Email, Chat y videollamada</li>
+            <li>Panel de Analítica</li>
+          </ul>
+        </article>
       </section>
     </main>
     <footer style="display:none">
