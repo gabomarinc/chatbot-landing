@@ -161,6 +161,9 @@ const Footer: React.FC = () => {
               src="https://konsul.digital/wp-content/uploads/2025/07/Logo-en-BW-e1751712792454.png"
               alt="Konsul Logo"
               className="h-8 mb-6"
+              width="160"
+              height="32"
+              loading="lazy"
             />
             <span className="text-sm text-gray-400 mb-4 block">Únete a nuestra comunidad</span>
             <div className="flex gap-4">

@@ -74,6 +74,8 @@ const Header: React.FC = () => {
               src="https://konsul.digital/wp-content/uploads/2025/07/Logo-en-BW-e1751712792454.png"
               alt="Konsul Logo"
               className="h-6 md:h-8 w-auto object-contain"
+              width="160"
+              height="32"
             />
           </a>
         </div>

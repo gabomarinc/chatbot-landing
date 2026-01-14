@@ -1257,12 +1257,11 @@ const Hero: React.FC = () => {
          <div className="absolute top-0 left-0 w-full h-[100vh] max-h-[1200px] overflow-hidden z-0 pointer-events-none">
             <img
                src="https://konsul.digital/wp-content/uploads/2025/12/Gemini_Generated_Image_x41m0wx41m0wx41m-scaled.avif"
-               alt="Konsul Background"
-               width="2560"
-               height="1440"
-               // Use fetchPriority="high" (camelCase for React)
-               fetchPriority="high"
-               className="w-full h-full object-cover object-top opacity-100 mt-24 md:mt-0"
+               alt="Fondo abstracto de red neuronal y tecnología de inteligencia artificial"
+               width="1920"
+               height="1080"
+               priority="true"
+               className="w-full h-full object-cover opacity-60 mix-blend-screen"
             />
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(28,41,56,0.95)_0%,transparent_60%)]" />
             <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#1c2938] via-[#1c2938]/80 to-transparent backdrop-blur-[2px] md:backdrop-blur-none" />
