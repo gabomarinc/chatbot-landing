@@ -8,7 +8,7 @@ const Pricing: React.FC = () => {
       name: "Starter",
       price: "$135",
       desc: "Ideal para PYMES que inician a automatizar.",
-      features: ["Hasta 2,500 conversaciones al mes", "2 Agente IA", "Integración con Web, WhatsApp, Instagram y Facebook", "Soporte por Email y Chat", "Panel de Analítica"],
+      features: ["Hasta 2,500 mensajes al mes", "3 Agentes de IA", "Integración con Web, WhatsApp, Instagram y Facebook", "Soporte por Email y Chat", "Panel de Analítica"],
       highlight: false,
       url: "https://wa.link/5mn0sl"
     },
@@ -16,7 +16,7 @@ const Pricing: React.FC = () => {
       name: "Business",
       price: "$245",
       desc: "El favorito de empresas listas para escalar.",
-      features: ["Hasta 7,500 conversaciones al mes", "4 Agente IA", "Integración con Web, WhatsApp, Instagram y Facebook", "Soporte prioritario por Email y Chat", "Panel de Analítica"],
+      features: ["Hasta 7,500 mensajes al mes", "6 Agentes de IA", "Integración con Web, WhatsApp, Instagram y Facebook", "Soporte prioritario por Email y Chat", "Panel de Analítica"],
       highlight: true,
       url: "https://wa.link/s8lvd4"
     },
@@ -24,7 +24,7 @@ const Pricing: React.FC = () => {
       name: "Enterprise",
       price: "$475",
       desc: "Potencia total para tu negocio.",
-      features: ["Hasta 20,000 conversaciones al mes", "6 Agente IA", "Integración con Web, WhatsApp, Instagram y Facebook", "Soporte prioritario por Email, Chat y videollamada", "Panel de Analítica"],
+      features: ["Hasta 25,000 mensajes al mes", "12 Agente IA", "Integración con Web, WhatsApp, Instagram y Facebook", "Soporte prioritario por Email, Chat y videollamada", "Panel de Analítica"],
       highlight: false,
       url: "https://wa.link/9awpeg"
     }
